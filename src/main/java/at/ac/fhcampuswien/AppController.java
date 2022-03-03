@@ -31,6 +31,7 @@ public class AppController {
         Article a01 = new Article("Caitlin Cleary","Forecasters call for weather on Monday");
         filteredList.add(a01);
         return filteredList;
+
     }
 
     private List<Article> generateMockList(){
