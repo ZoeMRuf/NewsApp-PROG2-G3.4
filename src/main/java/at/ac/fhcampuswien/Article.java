@@ -13,17 +13,17 @@ public class Article {
 
     //Getter that can be used in all Classes
     public String getAuthor(){
-        return "Hello";
+        return this.author;
     }
 
     public String getTitle(){
-        return "42";
+        return this.title;
     }
 
     //our own toString, so we don't get the HashCode from the Object-Method(toString)
     @Override
     public String toString(){
-        return "World";
+        return "Author: " + this.getAuthor() + ", " + "Title: " + this.getTitle();
     }
 
 }

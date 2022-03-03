@@ -28,7 +28,7 @@ public class AppControllerTest {
         List<Article> expectedFilterList = new ArrayList<Article>();
         expectedFilterList.add(a12);
 
-        assertEquals(actualFilterList, expectedFilterList, "query should be in the list");
+        assertEquals(actualFilterList.toString(), expectedFilterList.toString(), "query should be in the list");
 
     }
 

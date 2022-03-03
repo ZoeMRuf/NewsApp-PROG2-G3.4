@@ -9,13 +9,9 @@ public class App {
         Menu menu = new Menu(); //Instance of Menu to work with
         menu.start();
 
-        Article a08 = new Article("me","Police arrest everyone on February 22nd");
-        List<Article> expectedFilterList = new ArrayList<Article>();
-        expectedFilterList.add(a08);
+        Article a03 = new Article("Sheldon Cooper","Most Earthquake Damage is Caused by Shaking");
 
-        System.out.println(expectedFilterList);
-
-
+        System.out.println(a03);
     }
 
 
