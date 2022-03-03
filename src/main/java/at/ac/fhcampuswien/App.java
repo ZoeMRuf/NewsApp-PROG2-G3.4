@@ -2,11 +2,11 @@ package at.ac.fhcampuswien;
 
 public class App {
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+
+        Menu menu = new Menu(); //Instance of Menu to work with
+        menu.start();
+
     }
 
-    public String welcomeMessage(){
-        return "Hello World! We come in Peace. The answer is 42!";
-    }
 
 }
