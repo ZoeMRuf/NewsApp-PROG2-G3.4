@@ -32,7 +32,6 @@ public class AppControllerTest {
 
     }
 
-    /*
     @Test
     public void filterListTest2(){
         Article a01 = new Article("Caitlin Cleary","Forecasters call for weather on Monday");
@@ -53,8 +52,8 @@ public class AppControllerTest {
         List<Article> actualFilterList = AppController.filterList(trueQuery,withoutQueryList);
         List<Article> expectedFilterList = new ArrayList<Article>();
 
-        assertEquals(actualFilterList, expectedFilterList, "query should not be in the list");
+        assertEquals(actualFilterList.toString(), expectedFilterList.toString(), "query should not be in the list");
 
-    }*/
+    }
 
 }

@@ -11,7 +11,9 @@ public class App {
 
         Article a03 = new Article("Sheldon Cooper","Most Earthquake Damage is Caused by Shaking");
 
-        System.out.println(a03);
+        List<Article> expectedFilterList = new ArrayList<Article>();
+
+        System.out.println(expectedFilterList.toString());
     }
 
 
