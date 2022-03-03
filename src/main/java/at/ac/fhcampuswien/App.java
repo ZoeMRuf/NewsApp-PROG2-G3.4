@@ -14,6 +14,8 @@ public class App {
         List<Article> expectedFilterList = new ArrayList<Article>();
 
         System.out.println(expectedFilterList.toString());
+
+
     }
 
 

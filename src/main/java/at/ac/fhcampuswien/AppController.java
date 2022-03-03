@@ -26,12 +26,23 @@ public class AppController {
 
     //filter that can only be used in this Class -> useful for getTopHeadlinesAustria & getAllNewsBitcoin
     protected static List<Article> filterList(String query, List<Article> articles){
+        List<Article> filteredList = new ArrayList();
 
-        ArrayList filteredList = new ArrayList();
-        Article a01 = new Article("Caitlin Cleary","Forecasters call for weather on Monday");
-        filteredList.add(a01);
+        for (int i = 0; i < articles.size(); i++) {
+            Article toFilter = articles.get(i);
+            String articleTitle = toFilter.getTitle();
+            String[] splitTitle = articleTitle.split(" ");
+
+            for (int j = 0; j < splitTitle.length; j++) {
+                if (filteredList.contains(toFilter)){
+                    break;
+                }
+                else if (splitTitle[j].equalsIgnoreCase(query)){
+                    filteredList.add(toFilter);
+                }
+            }
+        }
         return filteredList;
-
     }
 
     private List<Article> generateMockList(){
