@@ -26,6 +26,7 @@ public class AppController {
 
     //filter that is addressed over the package -> useful for getTopHeadlinesAustria & getAllNewsBitcoin
     protected static List<Article> filterList(String query, List<Article> articles){
+
         List<Article> filteredList = new ArrayList();
 
         //for-loop to go through all articles in the list
@@ -47,6 +48,7 @@ public class AppController {
             }
         }
         return filteredList;
+
     }
 
     private List<Article> generateMockList(){
@@ -74,6 +76,7 @@ public class AppController {
         MockList.add(a11); MockList.add(a12); MockList.add(a13); MockList.add(a14); MockList.add(a15);
 
         return MockList;
+
     }
 
 }

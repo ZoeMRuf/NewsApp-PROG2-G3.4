@@ -17,11 +17,15 @@ public class Menu {
         Scanner s = new Scanner(System.in);
         String input;
 
+        //first do-while loop so that the program only stops if "q" is entered
         do {
-            input = s.nextLine().toLowerCase(); // no numbers because of .nextLine
-            this.handleInput(input);
-        }
-        while(!input.equals("a") && !input.equals("b") && !input.equals("y") && !input.equals("q"));
+            //second do-while loop for input validation.
+            do {
+                input = s.nextLine().toLowerCase(); // no numbers because of .nextLine
+                this.handleInput(input);
+            }
+            while(!input.equals("a") && !input.equals("b") && !input.equals("y") && !input.equals("q"));
+        }while (!input.equals("q"));
 
     }
 
@@ -64,6 +68,7 @@ public class Menu {
     }
 
     private static void printMenu(){
+
         System.out.println("******************************");
         System.out.println("  *   Welcome to NewsApp   *  ");
         System.out.println("******************************");
@@ -73,6 +78,7 @@ public class Menu {
         System.out.println("y: Count articles");
         System.out.println("q: Quit program");
         System.out.println();
+
     }
 
 }
