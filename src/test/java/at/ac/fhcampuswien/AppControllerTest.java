@@ -9,6 +9,7 @@ import java.util.List;
 public class AppControllerTest {
 
     @Test
+    //test if the right article is filter out of the list
     public void filterListTest1(){
         Article a09 = new Article("Mama Wolowitz","Thursday is cancelled");
         Article a10 = new Article("Santa Clause","Bridge closure date: Thursday or October");
@@ -18,21 +19,29 @@ public class AppControllerTest {
         Article a14 = new Article("Wayne Hansen","Bugs flying around with wings are flying bugs");
         Article a15 = new Article("Princess Leia","Students Cook & Serve Grandparents");
 
-        List<Article> withQueryList = new ArrayList<>();
+        List<Article> withQueryList = new ArrayList<>(); // -> list of articles with the query among them
 
         withQueryList.add(a09); withQueryList.add(a10); withQueryList.add(a11); withQueryList.add(a12);
         withQueryList.add(a13); withQueryList.add(a14); withQueryList.add(a15);
 
         String trueQuery = "Murderer";
-        List<Article> actualFilterList = AppController.filterList(trueQuery,withQueryList);
-        List<Article> expectedFilterList = new ArrayList<Article>();
+        List<Article> actualFilterList = AppController.filterList(trueQuery,withQueryList); // -> using the Method that should be tested
+        List<Article> expectedFilterList = new ArrayList<Article>(); // -> what we think the filtered list should give back
         expectedFilterList.add(a12);
 
-        assertEquals(actualFilterList.toString(), expectedFilterList.toString(), "query should be in the list");
-
+        //the actual Test
+        if (actualFilterList.size() != expectedFilterList.size()){
+            assertEquals(actualFilterList.size(), expectedFilterList.size()); // -> test if size is the same
+        }
+        else {
+            for (int i = 0; i < actualFilterList.size(); i++) {
+                assertEquals(actualFilterList.get(i), expectedFilterList.get(i), "query should be in the list"); // -> test if content is the same
+            }
+        }
     }
 
     @Test
+    //test if an empty list is given back if there is no right article
     public void filterListTest2(){
         Article a01 = new Article("Caitlin Cleary","Forecasters call for weather on Monday");
         Article a02 = new Article("Scott Calvert","Cows lose their jobs as milk prices drop");
@@ -43,17 +52,23 @@ public class AppControllerTest {
         Article a07 = new Article("Leonard Hofstadter","Breathing oxygen linked to staying alive");
         Article a08 = new Article("me","Police arrest everyone on February 22nd");
 
-        List<Article> withoutQueryList = new ArrayList<>();
+        List<Article> withoutQueryList = new ArrayList<>(); // -> list of articles without the query among them
 
         withoutQueryList.add(a01); withoutQueryList.add(a02); withoutQueryList.add(a03); withoutQueryList.add(a04);
         withoutQueryList.add(a05); withoutQueryList.add(a06); withoutQueryList.add(a07); withoutQueryList.add(a08);
 
         String trueQuery = "Murderer";
-        List<Article> actualFilterList = AppController.filterList(trueQuery,withoutQueryList);
-        List<Article> expectedFilterList = new ArrayList<Article>();
+        List<Article> actualFilterList = AppController.filterList(trueQuery,withoutQueryList); // -> using the Method that should be tested
+        List<Article> expectedFilterList = new ArrayList<Article>(); // -> an empty list (this should be the solution)
 
-        assertEquals(actualFilterList.toString(), expectedFilterList.toString(), "query should not be in the list");
-
+        //the actual Test
+        if (actualFilterList.size() != expectedFilterList.size()){
+            assertEquals(actualFilterList.size(), expectedFilterList.size()); // -> test if size is the same
+        }
+        else {
+            for (int i = 0; i < actualFilterList.size(); i++) {
+                assertEquals(actualFilterList.get(i), expectedFilterList.get(i), "query should not be in the list"); // -> test if content is the same
+            }
+        }
     }
-
 }

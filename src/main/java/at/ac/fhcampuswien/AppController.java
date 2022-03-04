@@ -24,19 +24,23 @@ public class AppController {
         return articles;
     }
 
-    //filter that can only be used in this Class -> useful for getTopHeadlinesAustria & getAllNewsBitcoin
+    //filter that is addressed over the package -> useful for getTopHeadlinesAustria & getAllNewsBitcoin
     protected static List<Article> filterList(String query, List<Article> articles){
         List<Article> filteredList = new ArrayList();
 
+        //for-loop to go through all articles in the list
         for (int i = 0; i < articles.size(); i++) {
             Article toFilter = articles.get(i);
-            String articleTitle = toFilter.getTitle();
-            String[] splitTitle = articleTitle.split(" ");
+            String articleTitle = toFilter.getTitle(); // -> to get only the title of the article
+            String[] splitTitle = articleTitle.split(" "); // -> to get all the words of the title
 
+            //for-loop to go through all the words
             for (int j = 0; j < splitTitle.length; j++) {
+                //if-condition to skip the title if it is already in the list
                 if (filteredList.contains(toFilter)){
                     break;
                 }
+                //if-condition to compare the query with the words
                 else if (splitTitle[j].equalsIgnoreCase(query)){
                     filteredList.add(toFilter);
                 }
