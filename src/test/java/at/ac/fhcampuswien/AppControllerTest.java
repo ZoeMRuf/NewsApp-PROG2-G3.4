@@ -35,7 +35,7 @@ public class AppControllerTest {
         }
         else {
             for (int i = 0; i < actualFilterList.size(); i++) {
-                assertEquals(actualFilterList.get(i), expectedFilterList.get(i), "query should be in the list"); // -> test if content is the same
+                assertEquals(expectedFilterList.get(i), actualFilterList.get(i), "query should be in the list"); // -> test if content is the same
             }
         }
     }
@@ -67,7 +67,7 @@ public class AppControllerTest {
         }
         else {
             for (int i = 0; i < actualFilterList.size(); i++) {
-                assertEquals(actualFilterList.get(i), expectedFilterList.get(i), "query should not be in the list"); // -> test if content is the same
+                assertEquals(expectedFilterList.get(i), actualFilterList.get(i), "query should not be in the list"); // -> test if content is the same
             }
         }
     }
