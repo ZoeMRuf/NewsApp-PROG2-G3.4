@@ -10,7 +10,11 @@ public class AppController {
     public AppController(){}
 
     //Methods
-    public void setArticles(List <Article> articles){}
+    public void setArticles(List <Article> articles){
+
+        //to set a list of article for the variable "articles" line 7 
+
+    }
 
     public int getArticleCount(){
         return 42;
