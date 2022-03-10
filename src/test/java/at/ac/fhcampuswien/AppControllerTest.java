@@ -186,4 +186,40 @@ public class AppControllerTest {
         String trueQuery = "call";
         assertEquals(testList, AppController.filterList(trueQuery,testList));
     }
+
+    @Test
+    /*
+    getAllNewsBitcoin tests if all articles with the query "bitcoin" are beeing returned
+     */
+    public void getAllNewsBitcoinTest1(){
+        AppController Controller = new AppController();
+
+        //added a list of articles with an article that includes the query "bitcoin" in the title
+        Article a01 = new Article("Caitlin Cleary","Forecasters call for weather on Monday");
+        Article a02 = new Article("Scott Calvert","Cows lose their jobs as milk prices drop");
+        Article a03 = new Article("Sheldon Cooper","Most Earthquake Damage is Caused by Bitcoin");
+        Article a04 = new Article("Penny","Man Accused of Killing Lawyer Receives a New Attorney");
+        Article a05 = new Article("Barbara Bitcoin","State population to double by 2040, babies to blame");
+
+        List<Article> testList = new ArrayList<>();
+        testList.add(a01);
+        testList.add(a02);
+        testList.add(a03);
+        testList.add(a04);
+        testList.add(a05);
+
+        Controller.setArticles(testList);
+
+        //create a list with the article that includes the query "bitcoin" in the title
+        //to check if the method getAllNewsBitcoin works
+        List<Article> testLista03 = new ArrayList<>();
+        testLista03.add(a03);
+
+        //compares testLista03 with the getAllNewsBitcoin method
+        assertEquals(testLista03, Controller.getAllNewsBitcoin());
+    }
+
+
+
+
 }

@@ -29,7 +29,7 @@ public class AppController {
     }
 
     public List<Article> getAllNewsBitcoin(){
-        return articles;
+        return filterList("bitcoin", articles);
     }
 
     //filter that is addressed over the package -> useful for getTopHeadlinesAustria & getAllNewsBitcoin
