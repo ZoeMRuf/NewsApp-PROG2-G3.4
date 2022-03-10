@@ -153,19 +153,22 @@ public class AppControllerTest {
         Article a07 = new Article("Leonard Hofstadter","Breathing oxygen linked to staying alive");
         Article a08 = new Article("me","Police arrest everyone on February 22nd");
 
-        List<Article> testList = new ArrayList<>(); // -> list of articles without the query among them
+        // list of articles that replace the articles List in AppController
+        List<Article> testList = new ArrayList<>();
 
         testList.add(a01); testList.add(a02); testList.add(a03); testList.add(a04);
         testList.add(a05); testList.add(a06); testList.add(a07); testList.add(a08);
 
+        //creating an AppController Object so that we can test the getArticleCount() methode and change the article list
         AppController Controller = new AppController();
         Controller.setArticles(testList);
+
+        //checking if the length of the testList we created is the same as the getArticleCount()
         assertEquals(testList.size(), Controller.getArticleCount());
     }
 
     @Test
-
-
+    //Checks if the gerArticleCount() methode returns 0, when the article list is null
     public void getArticleCount2(){
         List<Article> emptyList = null;
         AppController Controller = new AppController();
@@ -175,7 +178,8 @@ public class AppControllerTest {
     }
 
     @Test
-
+    /*Creating a new AppController object to replace the article List with another list containing only one article,
+    using the filterList() methode to find that article and check if it is the same as the new list we set it to*/
     public void setArticles1(){
         AppController Controller = new AppController();
         Article a01 = new Article("Caitlin Cleary","Forecasters call for weather on Monday");
