@@ -11,13 +11,17 @@ public class AppController {
 
     //Methods
     public void setArticles(List <Article> articles){
-
-        //to set a list of article for the variable "articles" line 7 
-
+        this.articles = articles;
     }
 
     public int getArticleCount(){
-        return 42;
+        if(this.articles == null){
+            return 0;
+        }
+
+        return this.articles.size();
+
+
     }
 
     public List<Article> getTopHeadlinesAustria(){

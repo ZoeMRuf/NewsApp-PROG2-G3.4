@@ -140,4 +140,50 @@ public class AppControllerTest {
             }
         }
     }
+
+    @Test
+
+    public void getArticleCount1(){
+        Article a01 = new Article("Caitlin Cleary","Forecasters call for weather on Monday");
+        Article a02 = new Article("Scott Calvert","Cows lose their jobs as milk prices drop");
+        Article a03 = new Article("Sheldon Cooper","Most Earthquake Damage is Caused by Shaking");
+        Article a04 = new Article("Penny","Man Accused of Killing Lawyer Receives a New Attorney");
+        Article a05 = new Article("Barbara Bitcoin","State population to double by 2040, babies to blame");
+        Article a06 = new Article("Howard Wolowitz","Missippi's literacy program shows improvement");
+        Article a07 = new Article("Leonard Hofstadter","Breathing oxygen linked to staying alive");
+        Article a08 = new Article("me","Police arrest everyone on February 22nd");
+
+        List<Article> testList = new ArrayList<>(); // -> list of articles without the query among them
+
+        testList.add(a01); testList.add(a02); testList.add(a03); testList.add(a04);
+        testList.add(a05); testList.add(a06); testList.add(a07); testList.add(a08);
+
+        AppController Controller = new AppController();
+        Controller.setArticles(testList);
+        assertEquals(testList.size(), Controller.getArticleCount());
+    }
+
+    @Test
+
+
+    public void getArticleCount2(){
+        List<Article> emptyList = null;
+        AppController Controller = new AppController();
+
+        Controller.setArticles(emptyList);
+        assertEquals(Controller.getArticleCount(), 0);
+    }
+
+    @Test
+
+    public void setArticles1(){
+        AppController Controller = new AppController();
+        Article a01 = new Article("Caitlin Cleary","Forecasters call for weather on Monday");
+        List<Article> testList = new ArrayList<>();
+        testList.add(a01);
+
+        Controller.setArticles(testList);
+        String trueQuery = "call";
+        assertEquals(testList, AppController.filterList(trueQuery,testList));
+    }
 }
