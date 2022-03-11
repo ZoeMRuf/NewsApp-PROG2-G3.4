@@ -143,7 +143,7 @@ public class AppControllerTest {
 
     @Test
 
-    public void getArticleCount1(){
+    public void getArticleCountTest1(){
         Article a01 = new Article("Caitlin Cleary","Forecasters call for weather on Monday");
         Article a02 = new Article("Scott Calvert","Cows lose their jobs as milk prices drop");
         Article a03 = new Article("Sheldon Cooper","Most Earthquake Damage is Caused by Shaking");
@@ -153,7 +153,7 @@ public class AppControllerTest {
         Article a07 = new Article("Leonard Hofstadter","Breathing oxygen linked to staying alive");
         Article a08 = new Article("me","Police arrest everyone on February 22nd");
 
-        // list of articles that replace the articles List in AppController
+        //list of articles that replace the articles List in AppController
         List<Article> testList = new ArrayList<>();
 
         testList.add(a01); testList.add(a02); testList.add(a03); testList.add(a04);
@@ -168,8 +168,8 @@ public class AppControllerTest {
     }
 
     @Test
-    //Checks if the gerArticleCount() methode returns 0, when the article list is null
-    public void getArticleCount2(){
+    //Checks if the getArticleCount() methode returns 0, when the article list is null
+    public void getArticleCountTest2(){
         List<Article> emptyList = null;
         AppController Controller = new AppController();
 
@@ -192,9 +192,7 @@ public class AppControllerTest {
     }
 
     @Test
-    /*
-    getAllNewsBitcoin tests if all articles with the query "bitcoin" are beeing returned
-     */
+    /* getAllNewsBitcoin tests if all articles with the query "bitcoin" are being returned */
     public void getAllNewsBitcoinTest1(){
         AppController Controller = new AppController();
 

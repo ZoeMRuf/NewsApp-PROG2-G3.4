@@ -18,10 +18,7 @@ public class AppController {
         if(this.articles == null){
             return 0;
         }
-
         return this.articles.size();
-
-
     }
 
     public List<Article> getTopHeadlinesAustria(){
@@ -56,7 +53,6 @@ public class AppController {
             }
         }
         return filteredList;
-
     }
 
     private List<Article> generateMockList(){
@@ -84,7 +80,6 @@ public class AppController {
         MockList.add(a11); MockList.add(a12); MockList.add(a13); MockList.add(a14); MockList.add(a15);
 
         return MockList;
-
     }
 
 }

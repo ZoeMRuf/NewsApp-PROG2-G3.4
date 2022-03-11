@@ -42,7 +42,7 @@ public class Menu {
                 System.out.println("case y");
                 break;
             case "q":
-                printExitMessage();//+end programm?
+                printExitMessage();
                 break;
             default:
                 if (!input.equals("")){
@@ -52,11 +52,23 @@ public class Menu {
 
     }
 
-    private void getArticleCount(AppController ctrl){}
+    private void getArticleCount(AppController ctrl){
 
-    private void getTopHeadlinesAustria(AppController ctrl){}
+        //ATTENTION: don't forget to connect with AppController
 
-    private void getAllNewsBitcoin(AppController ctrl){}
+    }
+
+    private void getTopHeadlinesAustria(AppController ctrl){
+
+        //ATTENTION: don't forget to connect with AppController
+
+    }
+
+    private void getAllNewsBitcoin(AppController ctrl){
+
+        //ATTENTION: don't forget to connect with AppController
+
+    }
 
     //this static Methods can only be used in this Class
     private static void printExitMessage(){

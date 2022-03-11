@@ -9,6 +9,9 @@ import javafx.scene.layout.*;
 import javafx.scene.control.Label;
 import javafx.geometry.Pos;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.CycleMethod;
+import javafx.scene.paint.RadialGradient;
+import javafx.scene.paint.Stop;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.Text;
@@ -21,34 +24,40 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class App{
+public class App extends Application{
     public static void main(String[] args) {
 
-        Menu menu = new Menu(); //Instance of Menu to work with
-        menu.start();
+        //Menu menu = new Menu(); //Instance of Menu to work with
+        //menu.start();
 
-        //launch(args);
+        launch(args);
     }
-/*
+
     @Override
     public void start(Stage stage) throws Exception {
 
         StackPane root = new StackPane();
-        Scene scene = new Scene(root, 700,500);
-        scene.setFill(Color.rgb(233,233,230));
+        Scene scene = new Scene(root, 900,600);
 
-        Image newsIcon = new Image(getClass().getResource("/NewsIcon.png").toExternalForm());
-        stage.getIcons().add(newsIcon);
+        scene.setFill(new RadialGradient(
+                0, 0, 0, 0, 1, true,
+                CycleMethod.NO_CYCLE,
+                new Stop(0, Color.web("#81c483")),   //#00abba
+                new Stop(1, Color.web("#fcc200")))   //#abba00
+        );
 
-        Text menuText = new Text("\n  *   Welcome to NewsApp   *  \n");
-        menuText.setFont(Font.font ("Verdana", 50));
+        Text menuText = new Text("\n| Welcome to NewsApp |\n");
+        menuText.setFont(Font.font ("Courier New", 50));
         menuText.setFill(Color.BLACK);
         root.getChildren().add(menuText);
 
+
+        Image newsIcon = new Image(getClass().getResource("/NewsIcon.png").toExternalForm());
+        stage.getIcons().add(newsIcon);
         stage.setTitle("News-App");
         stage.setScene(scene);
         stage.show();
 
     }
-*/
+
 }
