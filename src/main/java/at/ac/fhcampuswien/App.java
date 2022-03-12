@@ -24,16 +24,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class App extends Application{
+public class App {
     public static void main(String[] args) {
+        Menu menu = new Menu(); //Instance of Menu to work with
+        menu.start();
 
-        //Menu menu = new Menu(); //Instance of Menu to work with
-        //menu.start();
-
-        launch(args);
+        //launch(args);//
     }
 
-    @Override
+    /*@Override
     public void start(Stage stage) throws Exception {
 
         StackPane root = new StackPane();
@@ -59,5 +58,5 @@ public class App extends Application{
         stage.show();
 
     }
-
+*/
 }

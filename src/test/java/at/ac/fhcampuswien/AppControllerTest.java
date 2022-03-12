@@ -177,6 +177,8 @@ public class AppControllerTest {
         assertEquals(Controller.getArticleCount(), 0);
     }
 
+
+
     @Test
     /*Creating a new AppController object to replace the article List with another list containing only one article,
     using the filterList() methode to find that article and check if it is the same as the new list we set it to*/
@@ -221,7 +223,41 @@ public class AppControllerTest {
         assertEquals(testLista03, Controller.getAllNewsBitcoin());
     }
 
+    @Test
+    //to check if the method getTopHeadlinesAustria works
+    public void getTopHeadlinesAustriaTest1()
+    {
+        //Create an object for accessing getTopHeadlinesAustria method from AppController.java
+        AppController Controller = new AppController();
 
+        //added a list of articles for testing
+        Article a01 = new Article("Caecilia Smekal","Stadt Wolnowacha angeblich voellig zerstoert");
+        Article a02 = new Article("Kiyoko Metzler","Russlands Armee rueckt weiter auf Kiew vor – Moskau droht mit Angriffen auf westliche Waffenlieferungen");
+        Article a03 = new Article("Georg Hochmuth","Meinungsforscherin Sabine B. nannte Details zu SPOE-Auftraegen an Karmasin");
+        Article a04 = new Article("Herbert Neubauer","Bluemel soll im Ibiza-U-Ausschuss Infos zum Alois-Mock-Institut unterdrueckt haben");
+        Article a05 = new Article("Lara Hagen","Hure für die Reichen und Rote bleiben Gsindl: Das interaktive Archiv der Chatskandale");
 
+        List<Article> testList = new ArrayList<>();
+        testList.add(a01);
+        testList.add(a02);
+        testList.add(a03);
+        testList.add(a04);
+        testList.add(a05);
 
+        //creak a testList
+        Controller.setArticles(testList);
+
+        //to check if the method getTopHeadlinesAustria works
+        assertEquals(testList, Controller.getTopHeadlinesAustria());
+    }
+
+    @Test
+    //Checks if the getTopHeadlinesAustria() methode returns an empty list, when the article list is null
+    public void getTopHeadlinesAustriaTest2(){
+
+        //Create an object for accessing getTopHeadlinesAustria method from AppController.java
+        AppController Controller = new AppController();
+
+        assertEquals(Controller.getTopHeadlinesAustria(), null);
+    }
 }
