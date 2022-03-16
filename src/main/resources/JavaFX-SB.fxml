@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.ac.fhcampuswien.App">
+   <children>
+      <CheckBox alignment="BOTTOM_LEFT" layoutX="222.0" layoutY="156.0" mnemonicParsing="false" prefHeight="88.0" prefWidth="263.0" text="Did it work?" textFill="#ff0083">
+         <font>
+            <Font name="Bauhaus 93" size="22.0" />
+         </font>
+      </CheckBox>
+   </children>
+</AnchorPane>

@@ -3,6 +3,8 @@ package at.ac.fhcampuswien;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.*;
@@ -24,19 +26,32 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class App {
+public class App extends Application {
     public static void main(String[] args) {
-        Menu menu = new Menu(); //Instance of Menu to work with
-        menu.start();
+        //Menu menu = new Menu(); //Instance of Menu to work with
+        //menu.start();
 
-        //launch(args);//
+        launch(args);
     }
 
-    /*@Override
+    @Override
     public void start(Stage stage) throws Exception {
 
-        StackPane root = new StackPane();
+
+        Parent root = FXMLLoader.load(getClass().getResource("/JavaFX-SB.fxml"));
         Scene scene = new Scene(root, 900,600);
+
+        Image newsIcon = new Image(getClass().getResource("/NewsIcon.png").toExternalForm());
+        stage.getIcons().add(newsIcon);
+        stage.setTitle("News-App");
+        stage.setScene(scene);
+        stage.show();
+
+
+        /*
+
+        StackPane root = new StackPane();
+
 
         scene.setFill(new RadialGradient(
                 0, 0, 0, 0, 1, true,
@@ -51,12 +66,10 @@ public class App {
         root.getChildren().add(menuText);
 
 
-        Image newsIcon = new Image(getClass().getResource("/NewsIcon.png").toExternalForm());
-        stage.getIcons().add(newsIcon);
-        stage.setTitle("News-App");
-        stage.setScene(scene);
-        stage.show();
+
+
+         */
 
     }
-*/
+
 }
