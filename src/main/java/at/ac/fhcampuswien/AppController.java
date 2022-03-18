@@ -7,7 +7,10 @@ public class AppController {
     private List<Article> articles;
 
     //Constructor for this Class
-    public AppController(){}
+    public AppController(){
+        this.articles = new ArrayList<>();
+        this.articles = generateMockList();
+    }
 
     //Methods
     public void setArticles(List <Article> articles){
@@ -22,8 +25,8 @@ public class AppController {
     }
 
     public List<Article> getTopHeadlinesAustria(){
-        List <Article>topHeadlines = new ArrayList<>();
-        topHeadlines = articles;
+        List <Article> topHeadlines = new ArrayList<>();
+        topHeadlines = articles; // just for now!
         return topHeadlines;
 
     }
@@ -58,7 +61,7 @@ public class AppController {
         return filteredList;
     }
 
-    private List<Article> generateMockList(){
+    private static List<Article> generateMockList(){
 
         Article a01 = new Article("Caitlin Cleary","Forecasters call for weather on Monday");
         Article a02 = new Article("Scott Calvert","Cows lose their jobs as milk prices drop");

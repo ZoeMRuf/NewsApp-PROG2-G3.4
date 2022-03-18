@@ -37,7 +37,6 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws Exception {
 
-
         Parent root = FXMLLoader.load(getClass().getResource("/JavaFX-SB.fxml"));
         Scene scene = new Scene(root); //900, 600
 
@@ -46,29 +45,6 @@ public class App extends Application {
         stage.setTitle("News-App");
         stage.setScene(scene);
         stage.show();
-
-
-        /*
-
-        StackPane root = new StackPane();
-
-
-        scene.setFill(new RadialGradient(
-                0, 0, 0, 0, 1, true,
-                CycleMethod.NO_CYCLE,
-                new Stop(0, Color.web("#81c483")),   //#00abba
-                new Stop(1, Color.web("#fcc200")))   //#abba00
-        );
-
-        Text menuText = new Text("\n| Welcome to NewsApp |\n");
-        menuText.setFont(Font.font ("Courier New", 50));
-        menuText.setFill(Color.BLACK);
-        root.getChildren().add(menuText);
-
-
-
-
-         */
 
     }
 

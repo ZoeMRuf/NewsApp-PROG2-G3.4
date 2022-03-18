@@ -142,7 +142,6 @@ public class AppControllerTest {
     }
 
     @Test
-
     public void getArticleCountTest1(){
         Article a01 = new Article("Caitlin Cleary","Forecasters call for weather on Monday");
         Article a02 = new Article("Scott Calvert","Cows lose their jobs as milk prices drop");
@@ -176,8 +175,6 @@ public class AppControllerTest {
         Controller.setArticles(emptyList);
         assertEquals(Controller.getArticleCount(), 0);
     }
-
-
 
     @Test
     /*Creating a new AppController object and afterwards compare if the empty articles list is 0 and after adding an
@@ -264,6 +261,6 @@ public class AppControllerTest {
         List<Article> testList = new ArrayList<>();
         Controller.setArticles(testList);
 
-        assertEquals(Controller.getTopHeadlinesAustria(),testList); // test does not work !!!
+        assertEquals(Controller.getTopHeadlinesAustria(),testList);
     }
 }
