@@ -1,16 +1,94 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.CheckBox?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.ac.fhcampuswien.App">
+<AnchorPane prefHeight="500.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.ac.fhcampuswien.App">
    <children>
-      <CheckBox alignment="BOTTOM_LEFT" layoutX="222.0" layoutY="156.0" mnemonicParsing="false" prefHeight="88.0" prefWidth="263.0" text="Did it work?" textFill="#ff0083">
-         <font>
-            <Font name="Bauhaus 93" size="22.0" />
-         </font>
-      </CheckBox>
+      <VBox prefHeight="500.0" prefWidth="748.6666666666666" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Digital Times" textAlignment="CENTER" wrappingWidth="607.4730253219604">
+               <font>
+                  <Font name="Old English Text MT" size="70.0" />
+               </font>
+               <fill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="0.7456140518188477" green="0.17489711940288544" blue="0.2890405058860779" />
+                           </color>
+                        </Stop>
+                        <Stop offset="0.2264631043256996">
+                           <color>
+                              <Color red="0.7456140518188477" green="0.17489711940288544" blue="0.2890405058860779" />
+                           </color>
+                        </Stop>
+                        <Stop offset="0.7506361323155214">
+                           <color>
+                              <Color red="0.35238519310951233" green="0.6052631735801697" blue="0.1158219650387764" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="0.35238519310951233" green="0.6052631735801697" blue="0.1158219650387764" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </fill>
+               <VBox.margin>
+                  <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+               </VBox.margin>
+            </Text>
+            <Separator prefHeight="0.0" prefWidth="593.0" valignment="TOP">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <VBox.margin>
+                  <Insets bottom="10.0" left="30.0" right="30.0" top="10.0" />
+               </VBox.margin>
+            </Separator>
+            <Text stroke="#040404" strokeType="OUTSIDE" strokeWidth="0.0" text="Get top headlines austria" wrappingWidth="652.09765625">
+               <font>
+                  <Font name="Monospaced Bold Italic" size="40.0" />
+               </font>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </Text>
+            <Separator prefHeight="0.0" prefWidth="593.0" valignment="TOP">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <VBox.margin>
+                  <Insets bottom="10.0" left="30.0" right="30.0" top="10.0" />
+               </VBox.margin>
+            </Separator>
+            <Text stroke="#040404" strokeType="OUTSIDE" strokeWidth="0.0" text="Get all news about bitcoin" wrappingWidth="652.09765625">
+               <font>
+                  <Font name="Monospaced Bold Italic" size="40.0" />
+               </font>
+            </Text>
+            <Separator prefHeight="0.0" prefWidth="593.0" valignment="TOP">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <VBox.margin>
+                  <Insets bottom="10.0" left="30.0" right="30.0" top="10.0" />
+               </VBox.margin>
+            </Separator>
+         </children>
+         <padding>
+            <Insets left="30.0" right="30.0" />
+         </padding>
+      </VBox>
    </children>
 </AnchorPane>

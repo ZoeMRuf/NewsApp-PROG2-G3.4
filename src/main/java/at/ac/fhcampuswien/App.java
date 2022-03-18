@@ -39,7 +39,7 @@ public class App extends Application {
 
 
         Parent root = FXMLLoader.load(getClass().getResource("/JavaFX-SB.fxml"));
-        Scene scene = new Scene(root, 900,600);
+        Scene scene = new Scene(root); //900, 600
 
         Image newsIcon = new Image(getClass().getResource("/NewsIcon.png").toExternalForm());
         stage.getIcons().add(newsIcon);
