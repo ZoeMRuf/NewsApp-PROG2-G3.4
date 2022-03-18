@@ -22,7 +22,10 @@ public class AppController {
     }
 
     public List<Article> getTopHeadlinesAustria(){
-        return articles;
+        List <Article>topHeadlines = new ArrayList<>();
+        topHeadlines = articles;
+        return topHeadlines;
+
     }
 
     public List<Article> getAllNewsBitcoin(){

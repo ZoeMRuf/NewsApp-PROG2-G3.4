@@ -259,6 +259,7 @@ public class AppControllerTest {
         AppController Controller = new AppController();
 
         List<Article> testList = new ArrayList<>();
+        Controller.setArticles(testList);
 
         assertEquals(Controller.getTopHeadlinesAustria(),testList); // test does not work !!!
     }
