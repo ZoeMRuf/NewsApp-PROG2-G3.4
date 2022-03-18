@@ -180,17 +180,20 @@ public class AppControllerTest {
 
 
     @Test
-    /*Creating a new AppController object to replace the article List with another list containing only one article,
-    using the filterList() methode to find that article and check if it is the same as the new list we set it to*/
-    public void setArticles1(){
+    /*Creating a new AppController object and afterwards compare if the empty articles list is 0 and after adding an
+    article is equal to one */
+    public void setArticlesTest1(){
         AppController Controller = new AppController();
-        Article a01 = new Article("Caitlin Cleary","Forecasters call for weather on Monday");
+        Article a01 = new Article("Caitlin Cleary","me");
+        //Article a02 = new Article("Peter","you");
+
         List<Article> testList = new ArrayList<>();
         testList.add(a01);
 
+        int i = Controller.getArticleCount();
         Controller.setArticles(testList);
-        String trueQuery = "call";
-        assertEquals(testList, AppController.filterList(trueQuery,testList)); // ??? Controller statt AppController ???
+        int k = Controller.getArticleCount();
+        assertEquals(i + 1, k);
     }
 
     @Test

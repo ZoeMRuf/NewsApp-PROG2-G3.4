@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AppController {
-    private List<Article> articles = generateMockList(); // For us to test the Methods.
+    private List<Article> articles;
 
     //Constructor for this Class
     public AppController(){}
