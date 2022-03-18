@@ -53,21 +53,15 @@ public class Menu {
     }
 
     private void getArticleCount(AppController ctrl){
-
-        //ATTENTION: don't forget to connect with AppController
-
+        ctrl.getArticleCount();
     }
 
     private void getTopHeadlinesAustria(AppController ctrl){
-
-        //ATTENTION: don't forget to connect with AppController
-
+        ctrl.getTopHeadlinesAustria();
     }
 
     private void getAllNewsBitcoin(AppController ctrl){
-
-        //ATTENTION: don't forget to connect with AppController
-
+        ctrl.getAllNewsBitcoin();
     }
 
     //this static Methods can only be used in this Class
