@@ -258,6 +258,8 @@ public class AppControllerTest {
         //Create an object for accessing getTopHeadlinesAustria method from AppController.java
         AppController Controller = new AppController();
 
-        assertEquals(Controller.getTopHeadlinesAustria(), null); // test does not work !!!
+        List<Article> testList = new ArrayList<>();
+
+        assertEquals(Controller.getTopHeadlinesAustria(),testList); // test does not work !!!
     }
 }
