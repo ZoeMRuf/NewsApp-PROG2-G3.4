@@ -187,10 +187,10 @@ public class AppControllerTest {
         List<Article> testList = new ArrayList<>();
         testList.add(a01);
 
-        int i = Controller.getArticleCount();
+        int i = Controller.getArticleCount(); // should be 15 because of generate Mock List
         Controller.setArticles(testList);
         int k = Controller.getArticleCount();
-        assertEquals(i + 1, k);
+        assertEquals(i , k + 14);
     }
 
     @Test
