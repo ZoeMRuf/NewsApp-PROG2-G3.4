@@ -26,19 +26,21 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class App extends Application {
+public class App {
     public static void main(String[] args) {
-        //Menu menu = new Menu(); //Instance of Menu to work with
-        //menu.start();
+        Menu menu = new Menu(); //Instance of Menu to work with
+        menu.start();
 
-        launch(args);
+        //launch(args);
     }
+
+    /*
 
     @Override
     public void start(Stage stage) throws Exception {
 
         Parent root = FXMLLoader.load(getClass().getResource("/JavaFX-SB.fxml"));
-        Scene scene = new Scene(root); //900, 600
+        Scene scene = new Scene(root,900,600);
 
         Image newsIcon = new Image(getClass().getResource("/NewsIcon.png").toExternalForm());
         stage.getIcons().add(newsIcon);
@@ -47,5 +49,7 @@ public class App extends Application {
         stage.show();
 
     }
+
+     */
 
 }

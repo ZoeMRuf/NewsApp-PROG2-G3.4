@@ -53,7 +53,8 @@ public class AppController {
                     break;
                 }
                 //if-condition to compare the query with the words
-                else if (splitTitle[j].equalsIgnoreCase(query)){
+                else if (splitTitle[j].toLowerCase().contains(query.toLowerCase())){
+                    //.equalsIgnoreCase(query) -> searches only for the whole word not just parts
                     filteredList.add(toFilter);
                 }
             }
@@ -86,6 +87,21 @@ public class AppController {
         MockList.add(a11); MockList.add(a12); MockList.add(a13); MockList.add(a14); MockList.add(a15);
 
         return MockList;
+    }
+
+    public static void main(String[] args) {
+
+        Article a01 = new Article("Caitlin Cleary","Forecasters call for weather on Monday");
+        Article a02 = new Article("Scott Calvert","Cows lose their jobs as milk prices drop");
+        Article a03 = new Article("Sheldon Cooper"," The Most Earthquake Damage is Caused by Shaking");
+        Article a04 = new Article("Penny","Man Accused of Killing Lawyer Receives a New Attorney");
+        Article a05 = new Article("Barbara Bitcoin","State population to double by 2040, babies to blame");
+
+        List<Article> MockList = new ArrayList<>();
+
+        MockList.add(a01); MockList.add(a02); MockList.add(a03); MockList.add(a04); MockList.add(a05);
+
+        System.out.println(filterList("the", MockList));
     }
 
 }
