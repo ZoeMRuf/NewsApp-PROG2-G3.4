@@ -4,7 +4,7 @@ import java.util.Locale;
 import java.util.Scanner;
 
 public class Menu {
-    private AppController controller;//Instance of AppController
+    private AppController controller = new AppController();//Instance of AppController
 
     //Attributes
     private static final String INVALID_INPUT_MESSAGE = "Your input was invalid. Pleas try again. READ THE F***ING MENU.";
@@ -34,15 +34,15 @@ public class Menu {
         switch (input){
             case "a":
                 System.out.println("case a");
-                //getTopHeadlinesAustria(controller);
+                getTopHeadlinesAustria(controller);
                 break;
             case "b":
                 System.out.println("case b");
-                //getAllNewsBitcoin(controller);
+                getAllNewsBitcoin(controller);
                 break;
             case "y":
                 System.out.println("case y");
-                //getArticleCount(controller);
+                getArticleCount(controller);
                 break;
             case "q":
                 printExitMessage();
@@ -56,15 +56,15 @@ public class Menu {
     }
 
     private void getArticleCount(AppController ctrl){
-        ctrl.getArticleCount();
+        System.out.println(ctrl.getArticleCount());
     }
 
     private void getTopHeadlinesAustria(AppController ctrl){
-        ctrl.getTopHeadlinesAustria();
+        System.out.println(ctrl.getTopHeadlinesAustria());
     }
 
     private void getAllNewsBitcoin(AppController ctrl){
-        ctrl.getAllNewsBitcoin();
+        System.out.println(ctrl.getAllNewsBitcoin());
     }
 
     //this static Methods can only be used in this Class

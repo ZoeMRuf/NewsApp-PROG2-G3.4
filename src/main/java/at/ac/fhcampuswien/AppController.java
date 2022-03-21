@@ -89,6 +89,8 @@ public class AppController {
         return MockList;
     }
 
+    /*
+
     public static void main(String[] args) {
 
         Article a01 = new Article("Caitlin Cleary","Forecasters call for weather on Monday");
@@ -103,5 +105,7 @@ public class AppController {
 
         System.out.println(filterList("the", MockList));
     }
+
+     */
 
 }

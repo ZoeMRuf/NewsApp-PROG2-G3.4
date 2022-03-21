@@ -95,7 +95,8 @@ public class AppControllerTest {
         String trueQuery = "to";
         List<Article> actualFilterList = AppController.filterList(trueQuery,withQueryList); // -> using the Method that should be tested
         List<Article> expectedFilterList = new ArrayList<Article>(); // -> what we think the filtered list should give back
-        expectedFilterList.add(a05); expectedFilterList.add(a07);
+
+        expectedFilterList.add(a04);expectedFilterList.add(a05); expectedFilterList.add(a07);
 
         //the actual Test
         if (actualFilterList.size() != expectedFilterList.size()){
