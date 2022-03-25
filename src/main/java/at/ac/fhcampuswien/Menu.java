@@ -23,7 +23,9 @@ public class Menu {
             do {
                 input = s.nextLine().toLowerCase(); // no numbers because of .nextLine
                 this.handleInput(input);
-                printMenu();
+                if(!input.equals("q")){
+                    printMenu();
+                }
             }
             while(!input.equals("a") && !input.equals("b") && !input.equals("y") && !input.equals("q"));
         }while (!input.equals("q"));
