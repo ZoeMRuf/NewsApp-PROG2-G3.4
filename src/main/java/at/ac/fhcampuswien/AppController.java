@@ -89,4 +89,8 @@ public class AppController {
         return MockList;
     }
 
+    public List<Article> getArticles(){
+        return articles;
+    }
+
 }

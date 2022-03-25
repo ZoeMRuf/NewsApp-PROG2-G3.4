@@ -178,8 +178,8 @@ public class AppControllerTest {
     }
 
     @Test
-    /*Creating a new AppController object and afterwards compare if the empty articles list is 0 and after adding an
-    article is equal to one */
+    /*Creating a new AppController object and adding an article with setArticles
+        compare if article list(with getArticles) is the same as the article added */
     public void setArticlesTest1(){
         AppController Controller = new AppController();
         Article a01 = new Article("Caitlin Cleary","me");
@@ -188,10 +188,9 @@ public class AppControllerTest {
         List<Article> testList = new ArrayList<>();
         testList.add(a01);
 
-        int i = Controller.getArticleCount(); // should be 15 because of generate Mock List
+
         Controller.setArticles(testList);
-        int k = Controller.getArticleCount();
-        assertEquals(i , k + 14);
+        assertEquals(Controller.getArticles(), testList);
     }
 
     @Test
