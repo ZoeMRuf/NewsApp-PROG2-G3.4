@@ -36,15 +36,12 @@ public class Menu {
 
         switch (input){
             case "a":
-                System.out.println("case a");
                 getTopHeadlinesAustria(controller);
                 break;
             case "b":
-                System.out.println("case b");
                 getAllNewsBitcoin(controller);
                 break;
             case "y":
-                System.out.println("case y");
                 getArticleCount(controller);
                 break;
             case "q":
