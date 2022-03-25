@@ -89,23 +89,4 @@ public class AppController {
         return MockList;
     }
 
-    /*
-
-    public static void main(String[] args) {
-
-        Article a01 = new Article("Caitlin Cleary","Forecasters call for weather on Monday");
-        Article a02 = new Article("Scott Calvert","Cows lose their jobs as milk prices drop");
-        Article a03 = new Article("Sheldon Cooper"," The Most Earthquake Damage is Caused by Shaking");
-        Article a04 = new Article("Penny","Man Accused of Killing Lawyer Receives a New Attorney");
-        Article a05 = new Article("Barbara Bitcoin","State population to double by 2040, babies to blame");
-
-        List<Article> MockList = new ArrayList<>();
-
-        MockList.add(a01); MockList.add(a02); MockList.add(a03); MockList.add(a04); MockList.add(a05);
-
-        System.out.println(filterList("the", MockList));
-    }
-
-     */
-
 }

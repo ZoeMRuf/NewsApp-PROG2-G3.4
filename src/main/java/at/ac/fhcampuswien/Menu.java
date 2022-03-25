@@ -23,6 +23,7 @@ public class Menu {
             do {
                 input = s.nextLine().toLowerCase(); // no numbers because of .nextLine
                 this.handleInput(input);
+                printMenu();
             }
             while(!input.equals("a") && !input.equals("b") && !input.equals("y") && !input.equals("q"));
         }while (!input.equals("q"));
@@ -56,7 +57,7 @@ public class Menu {
     }
 
     private void getArticleCount(AppController ctrl){
-        System.out.println(ctrl.getArticleCount());
+        System.out.println("Number of articles: " + ctrl.getArticleCount());
     }
 
     private void getTopHeadlinesAustria(AppController ctrl){
