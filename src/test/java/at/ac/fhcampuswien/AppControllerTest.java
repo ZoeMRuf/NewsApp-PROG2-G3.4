@@ -1,5 +1,6 @@
 package at.ac.fhcampuswien;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -9,8 +10,8 @@ import java.util.List;
 public class AppControllerTest {
 
     @Test
-    /* test if the right article is filter out of the list part 1:
-        if there is only on right article. */
+    @DisplayName("filterListTest1: if there is only on right article.")
+
     public void filterListTest1(){
         Article a09 = new Article("Mama Wolowitz","Thursday is cancelled");
         Article a10 = new Article("Santa Clause","Bridge closure date: Thursday or October");
@@ -42,8 +43,8 @@ public class AppControllerTest {
     }
 
     @Test
-    /* test if the right article is filter out of the list part 2:
-        if the query exits more than once in the title, the article should still just be added once. */
+    @DisplayName("filterListTest2: if the query exits more than once in the title, the article should still just be added once.")
+
     public void filterListTest2(){
         Article a09 = new Article("Mama Wolowitz","Thursday is cancelled");
         Article a10 = new Article("Santa Clause","Bridge closure date: Thursday or October");
@@ -75,8 +76,8 @@ public class AppControllerTest {
     }
 
     @Test
-    /* test if the right article is filter out of the list part 3:
-        if the query exists in more than one title all articles with the query should be added to the list. */
+    @DisplayName("filterListTest3: if the query exists in more than one title all articles with the query should be added to the list.")
+
     public void filterListTest3(){
         Article a01 = new Article("Caitlin Cleary","Forecasters call for weather on Monday");
         Article a02 = new Article("Scott Calvert","Cows lose their jobs as milk prices drop");
@@ -110,8 +111,8 @@ public class AppControllerTest {
     }
 
     @Test
-    /* test if an empty list is given back if there is no right article part 1:
-        if the query is not found, no article should be added, therefore the list is empty. */
+    @DisplayName("filterListTest4: if the query is not found, no article should be added, therefore the list is empty.")
+
     public void filterListTest4(){
         Article a01 = new Article("Caitlin Cleary","Forecasters call for weather on Monday");
         Article a02 = new Article("Scott Calvert","Cows lose their jobs as milk prices drop");
