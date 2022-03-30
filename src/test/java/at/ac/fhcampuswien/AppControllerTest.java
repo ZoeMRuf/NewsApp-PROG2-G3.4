@@ -225,9 +225,11 @@ public class AppControllerTest {
     }
 
     @Test
-    //to check if the method getTopHeadlinesAustria works
+    @DisplayName("getTopHeadlinesAustriaTest1: to check if the method getTopHeadlinesAustria works")
     public void getTopHeadlinesAustriaTest1()
+
     {
+
         //Create an object for accessing getTopHeadlinesAustria method from AppController.java
         AppController Controller = new AppController();
 
@@ -253,7 +255,7 @@ public class AppControllerTest {
     }
 
     @Test
-    //Checks if the getTopHeadlinesAustria() methode returns an empty list, when the article list is null
+    @DisplayName("getTopHeadlinesAustriaTest2: Checks if the getTopHeadlinesAustria() methode returns an empty list, when the article list is null")
     public void getTopHeadlinesAustriaTest2(){
 
         //Create an object for accessing getTopHeadlinesAustria method from AppController.java
