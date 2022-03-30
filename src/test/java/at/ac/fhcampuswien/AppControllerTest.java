@@ -195,7 +195,7 @@ public class AppControllerTest {
     }
 
     @Test
-    /* getAllNewsBitcoin tests if all articles with the query "bitcoin" are being returned */
+    @DisplayName("getAllNewsBitcoinTest1: tests if all articles with the query \"bitcoin\" are being returned.")
     public void getAllNewsBitcoinTest1(){
         AppController Controller = new AppController();
 
