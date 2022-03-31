@@ -199,6 +199,7 @@ public class AppControllerTest {
 
     @Test
     @DisplayName("getAllNewsBitcoinTest1: tests if all articles with the query \"bitcoin\" are being returned.")
+
     public void getAllNewsBitcoinTest1(){
         AppController Controller = new AppController();
 
@@ -229,6 +230,7 @@ public class AppControllerTest {
 
     @Test
     @DisplayName("getTopHeadlinesAustriaTest1: to check if the method getTopHeadlinesAustria works")
+
     public void getTopHeadlinesAustriaTest1()
 
     {
@@ -259,6 +261,7 @@ public class AppControllerTest {
 
     @Test
     @DisplayName("getTopHeadlinesAustriaTest2: Checks if the getTopHeadlinesAustria() methode returns an empty list, when the article list is null")
+    
     public void getTopHeadlinesAustriaTest2(){
 
         //Create an object for accessing getTopHeadlinesAustria method from AppController.java

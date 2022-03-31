@@ -23,7 +23,7 @@ public class Article {
     //our own toString, so we don't get the HashCode from the Object-Method(toString)
     @Override
     public String toString(){
-        return "Author: " + this.getAuthor() + ", " + "Title: " + this.getTitle();
+        return "Author: " + this.getAuthor() + ", Title: " + this.getTitle();
     }
 
 }

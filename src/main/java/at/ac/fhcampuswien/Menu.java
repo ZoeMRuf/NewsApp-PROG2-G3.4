@@ -1,6 +1,5 @@
 package at.ac.fhcampuswien;
 
-import java.util.Locale;
 import java.util.Scanner;
 
 public class Menu {
@@ -23,7 +22,7 @@ public class Menu {
             do {
                 input = s.nextLine().toLowerCase(); // no numbers because of .nextLine
                 this.handleInput(input);
-                if(!input.equals("q")){
+                if(!input.equals("q") && !input.equals("")){
                     printMenu();
                 }
             }
@@ -37,19 +36,24 @@ public class Menu {
         switch (input){
             case "a":
                 getTopHeadlinesAustria(controller);
+                System.out.println();
                 break;
             case "b":
                 getAllNewsBitcoin(controller);
+                System.out.println();
                 break;
             case "y":
                 getArticleCount(controller);
+                System.out.println();
                 break;
             case "q":
                 printExitMessage();
+                System.out.println();
                 break;
             default:
                 if (!input.equals("")){
                     printInvalidInputMessage();
+                    System.out.println();
                 }
         }
 
