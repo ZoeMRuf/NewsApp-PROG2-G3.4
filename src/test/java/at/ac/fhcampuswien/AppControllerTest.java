@@ -144,6 +144,8 @@ public class AppControllerTest {
     }
 
     @Test
+    @DisplayName("getArticleCountTest1: tests if the articles inside the object have the right count")
+
     public void getArticleCountTest1(){
         Article a01 = new Article("Caitlin Cleary","Forecasters call for weather on Monday");
         Article a02 = new Article("Scott Calvert","Cows lose their jobs as milk prices drop");
@@ -169,7 +171,8 @@ public class AppControllerTest {
     }
 
     @Test
-    //Checks if the getArticleCount() methode returns 0, when the article list is null
+    @DisplayName("getArticleCountTest2: Checks if the getArticleCount() methode returns 0, when the article list is null")
+
     public void getArticleCountTest2(){
         List<Article> emptyList = null;
         AppController Controller = new AppController();
@@ -179,8 +182,8 @@ public class AppControllerTest {
     }
 
     @Test
-    /*Creating a new AppController object and adding an article with setArticles
-        compare if article list(with getArticles) is the same as the article added */
+    @DisplayName("setArticleTest1: Adds an article with setArticles, compares if article list(with getArticles) is the same as the article added")
+
     public void setArticlesTest1(){
         AppController Controller = new AppController();
         Article a01 = new Article("Caitlin Cleary","me");
