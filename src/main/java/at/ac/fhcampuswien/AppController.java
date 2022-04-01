@@ -12,9 +12,13 @@ public class AppController {
         this.articles = generateMockList();
     }
 
-    //Methods
+    //Getter & Setter for articles
     public void setArticles(List <Article> articles){
         this.articles = articles;
+    }
+
+    public List<Article> getArticles(){
+        return this.articles;
     }
 
     public int getArticleCount(){
@@ -24,6 +28,7 @@ public class AppController {
         return this.articles.size();
     }
 
+    //main AppController Methods
     public List<Article> getTopHeadlinesAustria(){
         List <Article> topHeadlines = new ArrayList<>();
         topHeadlines = articles; // just for now!
@@ -87,10 +92,6 @@ public class AppController {
         MockList.add(a11); MockList.add(a12); MockList.add(a13); MockList.add(a14); MockList.add(a15);
 
         return MockList;
-    }
-
-    public List<Article> getArticles(){
-        return articles;
     }
 
 }

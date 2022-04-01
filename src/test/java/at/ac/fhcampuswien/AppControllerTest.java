@@ -187,7 +187,6 @@ public class AppControllerTest {
     public void setArticlesTest1(){
         AppController Controller = new AppController();
         Article a01 = new Article("Caitlin Cleary","me");
-        //Article a02 = new Article("Peter","you");
 
         List<Article> testList = new ArrayList<>();
         testList.add(a01);
@@ -231,9 +230,7 @@ public class AppControllerTest {
     @Test
     @DisplayName("getTopHeadlinesAustriaTest1: to check if the method getTopHeadlinesAustria works")
 
-    public void getTopHeadlinesAustriaTest1()
-
-    {
+    public void getTopHeadlinesAustriaTest1() {
 
         //Create an object for accessing getTopHeadlinesAustria method from AppController.java
         AppController Controller = new AppController();
