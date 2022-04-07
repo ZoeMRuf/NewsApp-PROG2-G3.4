@@ -3,7 +3,7 @@ package at.ac.fhcampuswien;
 import java.util.Scanner;
 
 public class Menu {
-    private AppController controller = new AppController();//Instance of AppController
+    private AppController controller; //Instance of AppController
 
     //Attributes
     private static final String INVALID_INPUT_MESSAGE = "Your input was invalid. Pleas try again. READ THE F***ING MENU.";
@@ -11,6 +11,7 @@ public class Menu {
 
     //Methods
     public void start(){
+        controller = new AppController();
 
         printMenu();
         Scanner s = new Scanner(System.in);
