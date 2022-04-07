@@ -30,48 +30,58 @@ public class AppController {
 
     //main AppController Methods
     public List<Article> getTopHeadlinesAustria(){
-        List <Article> topHeadlines = new ArrayList<>();
-        topHeadlines = articles; // just for now!
-        return topHeadlines;
+        if (articles == null){
+            return new ArrayList<>();
+        }
+        return articles;
 
     }
 
     public List<Article> getAllNewsBitcoin(){
+        if (articles == null){
+            return new ArrayList<>();
+        }
         return filterList("bitcoin", articles);
     }
 
     //filter that is addressed over the package -> useful for getTopHeadlinesAustria & getAllNewsBitcoin
     protected static List<Article> filterList(String query, List<Article> articles){
 
-        List<Article> filteredList = new ArrayList();
+        if (query != null && articles != null){
 
-        //for-loop to go through all articles in the list
-        for (int i = 0; i < articles.size(); i++) {
-            Article toFilter = articles.get(i);
-            String articleTitle = toFilter.getTitle(); // -> to get only the title of the article
-            String[] splitTitle = articleTitle.split(" "); // -> to get all the words of the title
+            List<Article> filteredList = new ArrayList();
 
-            //for-loop to go through all the words
-            for (int j = 0; j < splitTitle.length; j++) {
-                //if-condition to skip the title if it is already in the list
-                if (filteredList.contains(toFilter)){
-                    break;
-                }
-                //if-condition to compare the query with the words
-                else if (splitTitle[j].toLowerCase().contains(query.toLowerCase())){
-                    //.equalsIgnoreCase(query) -> searches only for the whole word not just parts
-                    filteredList.add(toFilter);
+            //for-loop to go through all articles in the list
+            for (int i = 0; i < articles.size(); i++) {
+                Article toFilter = articles.get(i);
+                String articleTitle = toFilter.getTitle(); // -> to get only the title of the article
+                String[] splitTitle = articleTitle.split(" "); // -> to get all the words of the title
+
+                //for-loop to go through all the words
+                for (int j = 0; j < splitTitle.length; j++) {
+                    //if-condition to skip the title if it is already in the list
+                    if (filteredList.contains(toFilter)){
+                        break;
+                    }
+                    //if-condition to compare the query with the words
+                    else if (splitTitle[j].toLowerCase().contains(query.toLowerCase())){
+                        //.equalsIgnoreCase(query) -> searches only for the whole word not just parts
+                        filteredList.add(toFilter);
+                    }
                 }
             }
+            return filteredList;
         }
-        return filteredList;
+        else {
+            return new ArrayList<>();
+        }
     }
 
-    private static List<Article> generateMockList(){
+    public static List<Article> generateMockList(){
 
         Article a01 = new Article("Caitlin Cleary","Forecasters call for weather on Monday");
         Article a02 = new Article("Scott Calvert","Cows lose their jobs as milk prices drop");
-        Article a03 = new Article("Sheldon Cooper","Most Earthquake Damage is Caused by Shaking");
+        Article a03 = new Article("Sheldon Cooper","Most Earthquake Damage is Caused by Shaking Bitcoin");
         Article a04 = new Article("Penny","Man Accused of Killing Lawyer Receives a New Attorney");
         Article a05 = new Article("Barbara Bitcoin","State population to double by 2040, babies to blame");
         Article a06 = new Article("Howard Wolowitz","Missippi's literacy program shows improvement");
