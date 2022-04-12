@@ -22,15 +22,18 @@ import javafx.stage.Stage;
 import javafx.scene.image.Image;
 
 import java.awt.*;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 public class App {
-    public static void main(String[] args) {
-        Menu menu = new Menu(); //Instance of Menu to work with
-        menu.start();
+    public static void main(String[] args) throws IOException {
+        //Menu menu = new Menu(); //Instance of Menu to work with
+        //menu.start();
 
+        NewsAPI News = new NewsAPI();
+        System.out.println(News.run(News.urlBuilder(true, "at", "corona")));
         //launch(args);
     }
 

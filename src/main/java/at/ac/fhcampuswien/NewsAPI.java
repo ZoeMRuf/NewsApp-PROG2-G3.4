@@ -12,7 +12,7 @@ public class NewsAPI {
 
     OkHttpClient client = new OkHttpClient();
 
-    String run(String url) throws IOException {
+    public String run(String url) throws IOException {
         Request request = new Request.Builder()
                 .url(url)
                 .build();
@@ -22,7 +22,7 @@ public class NewsAPI {
         }
     }
 
-    public static String urlBuilder(boolean topHeadlines, String country, String query){
+    public String urlBuilder(boolean topHeadlines, String country, String query){
         StringBuilder stb = new StringBuilder();
         stb.append("https://newsapi.org/v2/");
 
@@ -42,7 +42,7 @@ public class NewsAPI {
         return stb.toString();
     }
 
-    public static String urlBuilder(boolean topHeadlines, String query){
+    public String urlBuilder(boolean topHeadlines, String query){
         StringBuilder stb = new StringBuilder();
         stb.append("https://newsapi.org/v2/");
 
