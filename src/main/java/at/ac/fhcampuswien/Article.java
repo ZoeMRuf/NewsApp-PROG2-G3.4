@@ -16,9 +16,10 @@ public class Article {
         this.title = title;
     }
 
-    public Article(String author, String title, String source, String url, String urlToImage, String publishedAt) {
+    public Article(String author, String title, String content, String source, String url, String urlToImage, String publishedAt) {
         this.author = author;
         this.title = title;
+        this.content = content;
         this.Source = source;
         this.url = url;
         this.urlToImage = urlToImage;
@@ -32,6 +33,10 @@ public class Article {
 
     public String getTitle(){
         return this.title;
+    }
+
+    public String getContant() {
+        return content;
     }
 
     public String getSource() {
