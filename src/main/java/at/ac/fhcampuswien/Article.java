@@ -4,8 +4,7 @@ public class Article {
     //Attributes
     private String author;
     private String title;
-    private String Keyword;
-    private String Language;
+    private String content;
     private String Source;
     private String url;
     private String urlToImage;
@@ -17,11 +16,9 @@ public class Article {
         this.title = title;
     }
 
-    public Article(String author, String title, String keyword, String language, String source, String url, String urlToImage, String publishedAt) {
+    public Article(String author, String title, String source, String url, String urlToImage, String publishedAt) {
         this.author = author;
         this.title = title;
-        this.Keyword = keyword;
-        this.Language = language;
         this.Source = source;
         this.url = url;
         this.urlToImage = urlToImage;
@@ -35,14 +32,6 @@ public class Article {
 
     public String getTitle(){
         return this.title;
-    }
-
-    public String getKeyword() {
-        return Keyword;
-    }
-
-    public String getLanguage() {
-        return Language;
     }
 
     public String getSource() {
