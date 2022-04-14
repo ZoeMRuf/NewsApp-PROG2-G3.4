@@ -34,7 +34,7 @@ public class AppController {
     public List<Article> getTopHeadlinesAustria(){
 
         try{
-            articles = news.parsedArticle(news.urlBuilder(true, "at"));
+            articles = news.parsedArticle(news.urlBuilder(true));
         }
         catch (IOException e){
             System.out.println("FAIL --> =(");
