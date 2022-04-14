@@ -28,12 +28,10 @@ import java.util.List;
 import java.util.Objects;
 
 public class App {
-    public static void main(String[] args) throws IOException {
-        //Menu menu = new Menu(); //Instance of Menu to work with
-        //menu.start();
+    public static void main(String[] args){
+        Menu menu = new Menu(); //Instance of Menu to work with
+        menu.start();
 
-        NewsAPI News = new NewsAPI();
-        System.out.println(News.parsedArticle(News.urlBuilder(false, "corona")));
         //launch(args);
     }
 

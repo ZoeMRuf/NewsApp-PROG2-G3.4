@@ -67,6 +67,23 @@ public class NewsAPI {
         return stb.toString();
     }
 
+    public String urlBuilder(boolean topHeadlines){
+        StringBuilder stb = new StringBuilder();
+        stb.append("https://newsapi.org/v2/");
+
+        if(topHeadlines){
+            stb.append("top-headlines?country=");
+            stb.append("at");
+        }else{
+            stb.append("everything?");
+        }
+
+        stb.append("&apiKey=");
+        stb.append(API_KEY);
+
+        return stb.toString();
+    }
+
     public List<Article> parsedArticle(String url) throws IOException {
         String jsonString = run(url);
         NewsResponse Response = gson.fromJson(jsonString, NewsResponse.class);

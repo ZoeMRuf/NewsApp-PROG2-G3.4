@@ -1,16 +1,18 @@
 package at.ac.fhcampuswien;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class AppController {
     private List<Article> articles;
+    NewsAPI news = new NewsAPI();
 
-    //Constructor for this Class
+    /*Constructor for this Class
     public AppController(){
         this.articles = new ArrayList<>();
         this.articles = generateMockList();
-    }
+    }*/
 
     //Getter & Setter for articles
     public void setArticles(List <Article> articles){
@@ -30,18 +32,33 @@ public class AppController {
 
     //main AppController Methods
     public List<Article> getTopHeadlinesAustria(){
+
+        try{
+            articles = news.parsedArticle(news.urlBuilder(true));
+        }
+        catch (IOException e){
+            System.out.println("FAIL --> =(");
+        }
+
         if (articles == null){
             return new ArrayList<>();
         }
         return articles;
-
     }
 
     public List<Article> getAllNewsBitcoin(){
+
+        try{
+            articles = news.parsedArticle(news.urlBuilder(false, "Bitcoin"));
+        }
+        catch (IOException e){
+            System.out.println("FAIL --> =(");
+        }
+
         if (articles == null){
             return new ArrayList<>();
         }
-        return filterList("bitcoin", articles);
+        return articles; //filterList("bitcoin", articles);
     }
 
     //filter that is addressed over the package -> useful for getTopHeadlinesAustria & getAllNewsBitcoin
