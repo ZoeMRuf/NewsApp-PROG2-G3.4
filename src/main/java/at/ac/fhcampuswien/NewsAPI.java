@@ -67,6 +67,7 @@ public class NewsAPI {
         return stb.toString();
     }
 
+
     public List<Article> parsedArticle(String url) throws IOException {
         String jsonString = run(url);
         NewsResponse Response = gson.fromJson(jsonString, NewsResponse.class);
