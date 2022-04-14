@@ -35,7 +35,7 @@ public class Article {
         return this.title;
     }
 
-    public String getContant() {
+    public String getContent() {
         return content;
     }
 
@@ -55,11 +55,34 @@ public class Article {
         return publishedAt;
     }
 
-    //our own toString, so we don't get the HashCode from the Object-Method(toString)
-    @Override
     public String toString(){
-        return "\n" + "Author: " + this.getAuthor() + ", Title: " + this.getTitle() + ", Source: " + this.getSource() +
-                ", Url: " + this.getUrl() + ", Url to image: " + this.getUrlToImage() + "Published at: " + this.getPublishedAt();
+        StringBuilder string = new StringBuilder();
+        string.append("\n");
+
+        if (this.getAuthor() != null){
+            string.append("Author: ").append(this.getAuthor()).append("\n");
+        }
+        if (this.getTitle() != null){
+            string.append("Title: ").append(this.getTitle()).append("\n");
+        }
+        if (this.getContent() != null){
+            string.append("Content: ").append(this.getContent()).append("\n");
+        }
+        if (this.getSource() != null){
+            string.append("Source: ").append(this.getSource()).append("\n");
+        }
+        if (this.getUrl() != null){
+            string.append("URL: ").append(this.getUrl()).append("\n");
+        }
+        if (this.getUrlToImage() != null){
+            string.append("Image: ").append(this.getUrlToImage()).append("\n");
+        }
+        if (this.getPublishedAt() != null){
+            string.append("Published at: ").append(this.getPublishedAt()).append("\n");
+        }
+
+        string.append("\n");
+        return string.toString();
     }
 
 }
