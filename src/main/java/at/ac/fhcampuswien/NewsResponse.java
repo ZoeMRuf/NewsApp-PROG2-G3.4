@@ -8,11 +8,6 @@ public class NewsResponse {
     private int totalResults;
     private List<Article> articles;
 
-    public NewsResponse(String status, int totalResults, List<Article> articles) {
-        this.status = status;
-        this.totalResults = totalResults;
-        this.articles = articles;
-    }
 
     public String getStatus() {
         return status;

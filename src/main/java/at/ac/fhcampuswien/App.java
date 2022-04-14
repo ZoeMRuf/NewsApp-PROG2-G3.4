@@ -33,7 +33,7 @@ public class App {
         //menu.start();
 
         NewsAPI News = new NewsAPI();
-        System.out.println(News.run(News.urlBuilder(true, "at", "corona")));
+        System.out.println(News.parsedArticle(News.urlBuilder(false, "corona")));
         //launch(args);
     }
 

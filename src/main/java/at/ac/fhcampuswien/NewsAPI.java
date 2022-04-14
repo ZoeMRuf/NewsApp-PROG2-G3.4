@@ -1,12 +1,17 @@
 package at.ac.fhcampuswien;
 
+import com.google.gson.Gson;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
+import java.util.List;
+
 import java.io.IOException;
 
 public class NewsAPI {
+
+    Gson gson = new Gson();
 
     private static final String API_KEY = "f1838514139e4ec4af10d461c4b28119";
 
@@ -60,5 +65,11 @@ public class NewsAPI {
         stb.append(API_KEY);
 
         return stb.toString();
+    }
+
+    public List<Article> parsedArticle(String url) throws IOException {
+        String jsonString = run(url);
+        NewsResponse Response = gson.fromJson(jsonString, NewsResponse.class);
+        return Response.getArticles();
     }
 }
