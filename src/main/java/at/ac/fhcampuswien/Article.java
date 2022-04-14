@@ -58,7 +58,8 @@ public class Article {
     //our own toString, so we don't get the HashCode from the Object-Method(toString)
     @Override
     public String toString(){
-        return "\n" + "Author: " + this.getAuthor() + ", Title: " + this.getTitle();
+        return "\n" + "Author: " + this.getAuthor() + ", Title: " + this.getTitle() + ", Source: " + this.getSource() +
+                ", Url: " + this.getUrl() + ", Url to image: " + this.getUrlToImage() + "Published at: " + this.getPublishedAt();
     }
 
 }
