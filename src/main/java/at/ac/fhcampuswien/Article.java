@@ -81,7 +81,6 @@ public class Article {
             string.append("Published at: ").append(this.getPublishedAt()).append("\n");
         }
 
-        string.append("\n");
         return string.toString();
     }
 
