@@ -34,7 +34,7 @@ public class AppController {
     public List<Article> getTopHeadlinesAustria(){
 
         try{
-            articles = news.parsedArticle(news.urlBuilder(true));
+            articles = news.parsedArticle(news.urlBuilder(true, "corona"));
         }
         catch (IOException e){
             System.out.println("FAIL --> =(");
@@ -49,7 +49,7 @@ public class AppController {
     public List<Article> getAllNewsBitcoin(){
 
         try{
-            articles = news.parsedArticle(news.urlBuilder(false, "Bitcoin"));
+            articles = news.parsedArticle(news.urlBuilder(false, "bitcoin"));
         }
         catch (IOException e){
             System.out.println("FAIL --> =(");
