@@ -84,7 +84,7 @@ public class NewsAPI {
         return stb.toString();
     }
 
-    public static String urlBuilder(Endpoint endpoint, Country coun, Language lang, Category category, Sortby sort, String query){
+    public static String urlBuilder(Endpoint endpoint, Country coun, Language lang, Category cate, Sortby sort, String query){
         StringBuilder stb = new StringBuilder();
         stb.append("https://newsapi.org/v2/");
 
@@ -92,15 +92,8 @@ public class NewsAPI {
             stb.append("top-headlines?country=");
             stb.append(coun.country);
 
-            switch (category){
-                case HEALTH -> stb.append("&category=health");
-                case SPORTS -> stb.append("&category=sports");
-                case GENERAL -> stb.append("&category=general");
-                case SCIENCE -> stb.append("&category=science");
-                case BUSINESS -> stb.append("&category=business");
-                case TECHNOLOGY -> stb.append("&category=technology");
-                case ENTERTAINMENT -> stb.append("&category=entertainment");
-            }
+            stb.append("&category=");
+            stb.append(cate.category);
         }
         else {
             stb.append("everything?language=");
