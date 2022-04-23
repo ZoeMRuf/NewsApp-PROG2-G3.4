@@ -109,13 +109,5 @@ public class NewsAPI {
         return Response.getStatus();
     }
 
-    public static void main(String[] args) throws IOException {
-        NewsAPI news = new NewsAPI();
-        System.out.println(news.urlBuilder(Endpoint.EVERYTHING, Country.UNITED_KINGDOM,Language.ENGLISH,Category.GENERAL,Sortby.PUBLISHED_AT, "corona"));
-
-        //System.out.println(news.parsedArticle(news.urlBuilder(Endpoint.EVERYTHING, Country.UNITED_KINGDOM,Language.ENGLISH,Category.GENERAL,Sortby.PUBLISHED_AT, "corona")));
-        System.out.println(news.urlBuilder(Country.AUSTRIA, Category.GENERAL, "corona"));
-    }
-
 }
 

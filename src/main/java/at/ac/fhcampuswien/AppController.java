@@ -13,12 +13,6 @@ public class AppController {
     private List<Article> articles;
     NewsAPI news = new NewsAPI();
 
-    /*Constructor for this Class
-    public AppController(){
-        this.articles = new ArrayList<>();
-        this.articles = generateMockList();
-    }*/
-
     //Getter & Setter for articles
     public void setArticles(List <Article> articles){
         this.articles = articles;
