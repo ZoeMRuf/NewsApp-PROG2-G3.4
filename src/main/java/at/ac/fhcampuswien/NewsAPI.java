@@ -97,6 +97,18 @@ public class NewsAPI {
         return Response.getArticles();
     }
 
+    public int parsedTotalResults(String url) throws IOException {
+        String jsonString = run(url);
+        NewsResponse Response = gson.fromJson(jsonString, NewsResponse.class);
+        return Response.getTotalResults();
+    }
+
+    public String parsedStatus(String url) throws IOException {
+        String jsonString = run(url);
+        NewsResponse Response = gson.fromJson(jsonString, NewsResponse.class);
+        return Response.getStatus();
+    }
+
     public static void main(String[] args) throws IOException {
         NewsAPI news = new NewsAPI();
         System.out.println(news.urlBuilder(Endpoint.EVERYTHING, Country.UNITED_KINGDOM,Language.ENGLISH,Category.GENERAL,Sortby.PUBLISHED_AT, "corona"));
