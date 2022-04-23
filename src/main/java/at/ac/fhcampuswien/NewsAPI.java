@@ -111,6 +111,48 @@ public class NewsAPI {
         return stb.toString();
     }
 
+    public static String urlBuilder(Country coun, Category cate, String query){
+        StringBuilder stb = new StringBuilder();
+        stb.append("https://newsapi.org/v2/");
+
+        stb.append("top-headlines?country=");
+        stb.append(coun.country);
+
+        stb.append("&category=");
+        stb.append(cate.category);
+
+
+        stb.append("&q=").append(query);
+
+        stb.append("&apiKey=");
+        stb.append(API_KEY);
+
+        return stb.toString();
+    }
+
+    public static String urlBuilder(Language lang, Sortby sort, String query){
+        StringBuilder stb = new StringBuilder();
+        stb.append("https://newsapi.org/v2/");
+
+        stb.append("everything?language=");
+        stb.append(lang.language);
+
+        stb.append("&sortby=");
+        stb.append(sort.sortby);
+
+        stb.append("&q=").append(query);
+
+        stb.append("&apiKey=");
+        stb.append(API_KEY);
+
+        return stb.toString();
+    }
+
+
+
+
+
+
     public List<Article> parsedArticle(String url) throws IOException {
         String jsonString = run(url);
         NewsResponse Response = gson.fromJson(jsonString, NewsResponse.class);
