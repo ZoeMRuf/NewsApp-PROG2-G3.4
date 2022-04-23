@@ -27,64 +27,7 @@ public class NewsAPI {
         }
     }
 
-    public String urlBuilder(boolean topHeadlines, String country, String query){
-        StringBuilder stb = new StringBuilder();
-        stb.append("https://newsapi.org/v2/");
-
-        if(topHeadlines){
-            stb.append("top-headlines?country=");
-            stb.append(country);
-            stb.append("&q=");
-        }else{
-            stb.append("everything?");
-            stb.append("q=");
-        }
-
-        stb.append(query);
-        stb.append("&apiKey=");
-        stb.append(API_KEY);
-
-        return stb.toString();
-    }
-
-    public String urlBuilder(boolean topHeadlines, String query){
-        StringBuilder stb = new StringBuilder();
-        stb.append("https://newsapi.org/v2/");
-
-        if(topHeadlines){
-            stb.append("top-headlines?country=");
-            stb.append("at");
-            stb.append("&q=");
-        }else{
-            stb.append("everything?");
-            stb.append("q=");
-        }
-
-        stb.append(query);
-        stb.append("&apiKey=");
-        stb.append(API_KEY);
-
-        return stb.toString();
-    }
-
-    public String urlBuilder(boolean topHeadlines ){
-        StringBuilder stb = new StringBuilder();
-        stb.append("https://newsapi.org/v2/");
-
-        if(topHeadlines){
-            stb.append("top-headlines?country=");
-            stb.append("at");
-        }else{
-            stb.append("everything?");
-        }
-
-        stb.append("&apiKey=");
-        stb.append(API_KEY);
-
-        return stb.toString();
-    }
-
-    public static String urlBuilder(Endpoint endpoint, Country coun, Language lang, Category cate, Sortby sort, String query){
+    public String urlBuilder(Endpoint endpoint, Country coun, Language lang, Category cate, Sortby sort, String query){
         StringBuilder stb = new StringBuilder();
         stb.append("https://newsapi.org/v2/");
 
@@ -111,7 +54,7 @@ public class NewsAPI {
         return stb.toString();
     }
 
-    public static String urlBuilder(Country coun, Category cate, String query){
+    public String urlBuilder(Country coun, Category cate, String query){
         StringBuilder stb = new StringBuilder();
         stb.append("https://newsapi.org/v2/");
 
@@ -130,7 +73,7 @@ public class NewsAPI {
         return stb.toString();
     }
 
-    public static String urlBuilder(Language lang, Sortby sort, String query){
+    public String urlBuilder(Language lang, Sortby sort, String query){
         StringBuilder stb = new StringBuilder();
         stb.append("https://newsapi.org/v2/");
 
