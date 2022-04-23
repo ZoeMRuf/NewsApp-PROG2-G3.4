@@ -113,7 +113,6 @@ public class NewsAPI {
             stb.append("everything?language=");
             stb.append(lang.language);
 
-
             switch (sortby){
                 case RELEVANCY -> stb.append("&sortby=relevancy");
                 case POPULARITY -> stb.append("&sortby=popularity");

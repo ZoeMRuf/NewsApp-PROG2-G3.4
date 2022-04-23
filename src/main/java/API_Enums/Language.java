@@ -1,4 +1,5 @@
 package API_Enums;
+// Sprachen und dazu passende abkürzungen von Susi Kloss
 
 public enum Language {
     ARABIC("ar"),
