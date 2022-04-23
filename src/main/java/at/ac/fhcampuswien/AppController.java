@@ -1,5 +1,10 @@
 package at.ac.fhcampuswien;
 
+import API_Enums.Category;
+import API_Enums.Country;
+import API_Enums.Language;
+import API_Enums.Sortby;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -34,7 +39,7 @@ public class AppController {
     public List<Article> getTopHeadlinesAustria(){
 
         try{
-            articles = news.parsedArticle(news.urlBuilder(true, "corona"));
+            articles = news.parsedArticle(news.urlBuilder(Country.AUSTRIA, Category.GENERAL, "corona"));
         }
         catch (IOException e){
             System.out.println("FAIL --> =(");
@@ -49,7 +54,7 @@ public class AppController {
     public List<Article> getAllNewsBitcoin(){
 
         try{
-            articles = news.parsedArticle(news.urlBuilder(false, "bitcoin"));
+            articles = news.parsedArticle(news.urlBuilder(Language.German, Sortby.PUBLISHED_AT, "bitcoin"));
         }
         catch (IOException e){
             System.out.println("FAIL --> =(");

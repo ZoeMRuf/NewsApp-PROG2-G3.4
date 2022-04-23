@@ -27,64 +27,7 @@ public class NewsAPI {
         }
     }
 
-    public String urlBuilder(boolean topHeadlines, String country, String query){
-        StringBuilder stb = new StringBuilder();
-        stb.append("https://newsapi.org/v2/");
-
-        if(topHeadlines){
-            stb.append("top-headlines?country=");
-            stb.append(country);
-            stb.append("&q=");
-        }else{
-            stb.append("everything?");
-            stb.append("q=");
-        }
-
-        stb.append(query);
-        stb.append("&apiKey=");
-        stb.append(API_KEY);
-
-        return stb.toString();
-    }
-
-    public String urlBuilder(boolean topHeadlines, String query){
-        StringBuilder stb = new StringBuilder();
-        stb.append("https://newsapi.org/v2/");
-
-        if(topHeadlines){
-            stb.append("top-headlines?country=");
-            stb.append("at");
-            stb.append("&q=");
-        }else{
-            stb.append("everything?");
-            stb.append("q=");
-        }
-
-        stb.append(query);
-        stb.append("&apiKey=");
-        stb.append(API_KEY);
-
-        return stb.toString();
-    }
-
-    public String urlBuilder(boolean topHeadlines ){
-        StringBuilder stb = new StringBuilder();
-        stb.append("https://newsapi.org/v2/");
-
-        if(topHeadlines){
-            stb.append("top-headlines?country=");
-            stb.append("at");
-        }else{
-            stb.append("everything?");
-        }
-
-        stb.append("&apiKey=");
-        stb.append(API_KEY);
-
-        return stb.toString();
-    }
-
-    public static String urlBuilder(Endpoint endpoint, Country coun, Language lang, Category category, Sortby sortby, String query){
+    public String urlBuilder(Endpoint endpoint, Country coun, Language lang, Category cate, Sortby sort, String query){
         StringBuilder stb = new StringBuilder();
         stb.append("https://newsapi.org/v2/");
 
@@ -92,27 +35,53 @@ public class NewsAPI {
             stb.append("top-headlines?country=");
             stb.append(coun.country);
 
-            switch (category){
-                case HEALTH -> stb.append("&category=health");
-                case SPORTS -> stb.append("&category=sports");
-                case GENERAL -> stb.append("&category=general");
-                case SCIENCE -> stb.append("&category=science");
-                case BUSINESS -> stb.append("&category=business");
-                case TECHNOLOGY -> stb.append("&category=technology");
-                case ENTERTAINMENT -> stb.append("&category=entertainment");
-            }
+            stb.append("&category=");
+            stb.append(cate.category);
         }
         else {
             stb.append("everything?language=");
             stb.append(lang.language);
 
-            switch (sortby){
-                case RELEVANCY -> stb.append("&sortby=relevancy");
-                case POPULARITY -> stb.append("&sortby=popularity");
-                case PUBLISHEDAT -> stb.append("&sortby=publishedAt");
-            }
-
+            stb.append("&sortby=");
+            stb.append(sort.sortby);
         }
+
+        stb.append("&q=").append(query);
+
+        stb.append("&apiKey=");
+        stb.append(API_KEY);
+
+        return stb.toString();
+    }
+
+    public String urlBuilder(Country coun, Category cate, String query){
+        StringBuilder stb = new StringBuilder();
+        stb.append("https://newsapi.org/v2/");
+
+        stb.append("top-headlines?country=");
+        stb.append(coun.country);
+
+        stb.append("&category=");
+        stb.append(cate.category);
+
+
+        stb.append("&q=").append(query);
+
+        stb.append("&apiKey=");
+        stb.append(API_KEY);
+
+        return stb.toString();
+    }
+
+    public String urlBuilder(Language lang, Sortby sort, String query){
+        StringBuilder stb = new StringBuilder();
+        stb.append("https://newsapi.org/v2/");
+
+        stb.append("everything?language=");
+        stb.append(lang.language);
+
+        stb.append("&sortby=");
+        stb.append(sort.sortby);
 
         stb.append("&q=").append(query);
 
@@ -128,12 +97,24 @@ public class NewsAPI {
         return Response.getArticles();
     }
 
+    public int parsedTotalResults(String url) throws IOException {
+        String jsonString = run(url);
+        NewsResponse Response = gson.fromJson(jsonString, NewsResponse.class);
+        return Response.getTotalResults();
+    }
+
+    public String parsedStatus(String url) throws IOException {
+        String jsonString = run(url);
+        NewsResponse Response = gson.fromJson(jsonString, NewsResponse.class);
+        return Response.getStatus();
+    }
+
     public static void main(String[] args) throws IOException {
-        System.out.println(urlBuilder(Endpoint.EVERYTHING, Country.UNITED_KINGDOM,Language.ENGLISH,Category.GENERAL,Sortby.PUBLISHEDAT, "corona"));
         NewsAPI news = new NewsAPI();
+        System.out.println(news.urlBuilder(Endpoint.EVERYTHING, Country.UNITED_KINGDOM,Language.ENGLISH,Category.GENERAL,Sortby.PUBLISHED_AT, "corona"));
 
-
-        System.out.println(news.parsedArticle(urlBuilder(Endpoint.EVERYTHING, Country.UNITED_KINGDOM,Language.ENGLISH,Category.GENERAL,Sortby.PUBLISHEDAT, "corona")));
+        //System.out.println(news.parsedArticle(news.urlBuilder(Endpoint.EVERYTHING, Country.UNITED_KINGDOM,Language.ENGLISH,Category.GENERAL,Sortby.PUBLISHED_AT, "corona")));
+        System.out.println(news.urlBuilder(Country.AUSTRIA, Category.GENERAL, "corona"));
     }
 
 }
