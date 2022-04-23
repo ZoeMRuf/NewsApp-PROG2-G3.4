@@ -55,6 +55,7 @@ public class Article {
         return publishedAt;
     }
 
+    @Override
     public String toString(){
         StringBuilder string = new StringBuilder();
         string.append("\n");

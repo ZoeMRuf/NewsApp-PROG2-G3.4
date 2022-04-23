@@ -13,10 +13,9 @@ import java.io.IOException;
 public class NewsAPI {
 
     Gson gson = new Gson();
+    OkHttpClient client = new OkHttpClient();
 
     private static final String API_KEY = "f1838514139e4ec4af10d461c4b28119";
-
-    OkHttpClient client = new OkHttpClient();
 
     public String run(String url) throws IOException {
         Request request = new Request.Builder()
@@ -85,7 +84,7 @@ public class NewsAPI {
         return stb.toString();
     }
 
-    public static String urlBuilder(Endpoint endpoint, Country country, Language language, Category category, Sortby sortby){
+    public static String urlBuilder(Endpoint endpoint, Country country, Language language, Category category, Sortby sortby, String query){
         StringBuilder stb = new StringBuilder();
         stb.append("https://newsapi.org/v2/");
 
@@ -109,26 +108,43 @@ public class NewsAPI {
                 case TECHNOLOGY -> stb.append("&category=technology");
                 case ENTERTAINMENT -> stb.append("&category=entertainment");
             }
-
-
         }
         else {
-            stb.append("everything?");
+            stb.append("everything?language");
 
             switch (language){
-                case ARABIC -> stb.append("&language=ar");
-                case DUTCH -> stb.append("&language=nl");
-                case FRENCH -> stb.append("&language=fr");
-                case German -> stb.append("&language=de");
-                case HEBREW -> stb.append("&language=he");
-                case SWEDEN -> stb.append("&language=se");
-                case CHINESE -> stb.append("&language=zh");
-                case ENGLISH -> stb.append("&language=en");
-                case ITALIAN -> stb.append("&language=it");
-                case RUSSIAN -> stb.append("&language=ru");
-                case SPANISH -> stb.append("&language=es");
-                case NORWEGIAN -> stb.append("&language=no");
-                case PORTUGUESE -> stb.append("&language=pt");
+                case ARABIC -> stb.append("=ar");
+                //case BULGARIAN ->;
+                //case BOSNIAN -> ;
+                //case CZECH -> ;
+                case German -> stb.append("=de");
+                //case GREEK -> ;
+                case ENGLISH -> stb.append("=en");
+                case SPANISH -> stb.append("=es");
+                case FRENCH -> stb.append("=fr");
+                case HEBREW -> stb.append("=he");
+                //case CROATIAN -> ;
+                //case HUNGARIAN -> ;
+                //case INDONESIAN -> ;
+                case ITALIAN -> stb.append("=it");
+                //case KOREAN -> ;
+                //case LATVIAN -> ;
+                //case LITHUANIAN -> ;
+                //case MALAY -> ;
+                case DUTCH -> stb.append("=nl");
+                case NORWEGIAN -> stb.append("=no");
+                //case POLISH -> ;
+                case PORTUGUESE -> stb.append("=pt");
+                //case ROMANIAN -> ;
+                case RUSSIAN -> stb.append("=ru");
+                //case NORTHERN_SAMI -> ;
+                //case SLOVENIAN -> ;
+                //case SLOVAK -> ;
+                case SWEDISH -> stb.append("=se");
+                //case THAI -> ;
+                //case TURKISH -> ;
+                //case UKRAINIAN -> ;
+                case CHINESE -> stb.append("=zh");
             }
 
             switch (sortby){
@@ -138,6 +154,8 @@ public class NewsAPI {
             }
 
         }
+
+        stb.append("&q=").append(query);
 
         stb.append("&apiKey=");
         stb.append(API_KEY);
@@ -151,8 +169,12 @@ public class NewsAPI {
         return Response.getArticles();
     }
 
-    public static void main(String[] args) {
-        System.out.println(urlBuilder(Endpoint.EVERYTHING, Country.AUSTRIA, Language.German, Category.GENERAL, Sortby.PUBLISHEDAT));
+    public static void main(String[] args) throws IOException {
+        System.out.println(urlBuilder(Endpoint.EVERYTHING, Country.UNITED_KINGDOM,Language.ENGLISH,Category.GENERAL,Sortby.PUBLISHEDAT, "corona"));
+        NewsAPI news = new NewsAPI();
+
+
+        System.out.println(news.parsedArticle(urlBuilder(Endpoint.EVERYTHING, Country.UNITED_KINGDOM,Language.ENGLISH,Category.GENERAL,Sortby.PUBLISHEDAT, "corona")));
     }
 
 }

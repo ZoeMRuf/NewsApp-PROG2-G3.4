@@ -58,7 +58,7 @@ public class AppController {
         if (articles == null){
             return new ArrayList<>();
         }
-        return articles; //filterList("bitcoin", articles);
+        return articles;
     }
 
     //filter that is addressed over the package -> useful for getTopHeadlinesAustria & getAllNewsBitcoin
