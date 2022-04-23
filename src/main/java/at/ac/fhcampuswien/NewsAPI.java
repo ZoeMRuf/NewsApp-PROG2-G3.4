@@ -84,20 +84,13 @@ public class NewsAPI {
         return stb.toString();
     }
 
-    public static String urlBuilder(Endpoint endpoint, Country country, Language lang, Category category, Sortby sortby, String query){
+    public static String urlBuilder(Endpoint endpoint, Country coun, Language lang, Category category, Sortby sortby, String query){
         StringBuilder stb = new StringBuilder();
         stb.append("https://newsapi.org/v2/");
 
         if (endpoint == Endpoint.TOPHEADLINE){
-            stb.append("top-headlines?country");
-
-            switch (country){
-                case UNITED_KINGDOM -> stb.append("=gb");
-                case GERMANY ->  stb.append("=de");
-                case AUSTRIA ->  stb.append("=at");
-                case AUSTRALIA ->  stb.append("=au");
-                case UNITED_STATES ->  stb.append("=us");
-            }
+            stb.append("top-headlines?country=");
+            stb.append(coun.country);
 
             switch (category){
                 case HEALTH -> stb.append("&category=health");
