@@ -84,7 +84,7 @@ public class NewsAPI {
         return stb.toString();
     }
 
-    public static String urlBuilder(Endpoint endpoint, Country country, Language language, Category category, Sortby sortby, String query){
+    public static String urlBuilder(Endpoint endpoint, Country country, Language lang, Category category, Sortby sortby, String query){
         StringBuilder stb = new StringBuilder();
         stb.append("https://newsapi.org/v2/");
 
@@ -110,42 +110,9 @@ public class NewsAPI {
             }
         }
         else {
-            stb.append("everything?language");
+            stb.append("everything?language=");
+            stb.append(lang.language);
 
-            switch (language){
-                case ARABIC -> stb.append("=ar");
-                //case BULGARIAN ->;
-                //case BOSNIAN -> ;
-                //case CZECH -> ;
-                case German -> stb.append("=de");
-                //case GREEK -> ;
-                case ENGLISH -> stb.append("=en");
-                case SPANISH -> stb.append("=es");
-                case FRENCH -> stb.append("=fr");
-                case HEBREW -> stb.append("=he");
-                //case CROATIAN -> ;
-                //case HUNGARIAN -> ;
-                //case INDONESIAN -> ;
-                case ITALIAN -> stb.append("=it");
-                //case KOREAN -> ;
-                //case LATVIAN -> ;
-                //case LITHUANIAN -> ;
-                //case MALAY -> ;
-                case DUTCH -> stb.append("=nl");
-                case NORWEGIAN -> stb.append("=no");
-                //case POLISH -> ;
-                case PORTUGUESE -> stb.append("=pt");
-                //case ROMANIAN -> ;
-                case RUSSIAN -> stb.append("=ru");
-                //case NORTHERN_SAMI -> ;
-                //case SLOVENIAN -> ;
-                //case SLOVAK -> ;
-                case SWEDISH -> stb.append("=se");
-                //case THAI -> ;
-                //case TURKISH -> ;
-                //case UKRAINIAN -> ;
-                case CHINESE -> stb.append("=zh");
-            }
 
             switch (sortby){
                 case RELEVANCY -> stb.append("&sortby=relevancy");
