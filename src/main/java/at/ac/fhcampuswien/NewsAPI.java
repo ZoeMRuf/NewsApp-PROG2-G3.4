@@ -91,11 +91,6 @@ public class NewsAPI {
         return stb.toString();
     }
 
-
-
-
-
-
     public List<Article> parsedArticle(String url) throws IOException {
         String jsonString = run(url);
         NewsResponse Response = gson.fromJson(jsonString, NewsResponse.class);
@@ -103,11 +98,11 @@ public class NewsAPI {
     }
 
     public static void main(String[] args) throws IOException {
-        System.out.println(urlBuilder(Endpoint.EVERYTHING, Country.UNITED_KINGDOM,Language.ENGLISH,Category.GENERAL,Sortby.PUBLISHED_AT, "corona"));
         NewsAPI news = new NewsAPI();
+        System.out.println(news.urlBuilder(Endpoint.EVERYTHING, Country.UNITED_KINGDOM,Language.ENGLISH,Category.GENERAL,Sortby.PUBLISHED_AT, "corona"));
 
-
-        System.out.println(news.parsedArticle(urlBuilder(Endpoint.EVERYTHING, Country.UNITED_KINGDOM,Language.ENGLISH,Category.GENERAL,Sortby.PUBLISHED_AT, "corona")));
+        //System.out.println(news.parsedArticle(news.urlBuilder(Endpoint.EVERYTHING, Country.UNITED_KINGDOM,Language.ENGLISH,Category.GENERAL,Sortby.PUBLISHED_AT, "corona")));
+        System.out.println(news.urlBuilder(Country.AUSTRIA, Category.GENERAL, "corona"));
     }
 
 }

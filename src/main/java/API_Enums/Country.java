@@ -2,12 +2,13 @@ package API_Enums;
 
 public enum Country {
     ARABIC("ar"),
+    AUSTRIA("at"),
     BULGARIAN("bg"),
     BOSNIAN("bs"),
     CZECH("cs"),
     German("de"),
     GREEK("el"),
-    ENGLISH("en"),
+    UNITED_KINGDOM("gb"),
     SPANISH("es"),
     FRENCH("fr"),
     HEBREW("he"),
