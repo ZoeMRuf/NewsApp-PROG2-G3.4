@@ -67,7 +67,7 @@ public class NewsAPI {
         return stb.toString();
     }
 
-    public String urlBuilder(boolean topHeadlines){
+    public String urlBuilder(boolean topHeadlines ){
         StringBuilder stb = new StringBuilder();
         stb.append("https://newsapi.org/v2/");
 
