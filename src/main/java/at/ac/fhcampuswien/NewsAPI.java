@@ -84,7 +84,7 @@ public class NewsAPI {
         return stb.toString();
     }
 
-    public static String urlBuilder(Endpoint endpoint, Country coun, Language lang, Category category, Sortby sortby, String query){
+    public static String urlBuilder(Endpoint endpoint, Country coun, Language lang, Category category, Sortby sort, String query){
         StringBuilder stb = new StringBuilder();
         stb.append("https://newsapi.org/v2/");
 
@@ -106,12 +106,8 @@ public class NewsAPI {
             stb.append("everything?language=");
             stb.append(lang.language);
 
-            switch (sortby){
-                case RELEVANCY -> stb.append("&sortby=relevancy");
-                case POPULARITY -> stb.append("&sortby=popularity");
-                case PUBLISHEDAT -> stb.append("&sortby=publishedAt");
-            }
-
+            stb.append("&sortby=");
+            stb.append(sort.sortby);
         }
 
         stb.append("&q=").append(query);
@@ -129,11 +125,11 @@ public class NewsAPI {
     }
 
     public static void main(String[] args) throws IOException {
-        System.out.println(urlBuilder(Endpoint.EVERYTHING, Country.UNITED_KINGDOM,Language.ENGLISH,Category.GENERAL,Sortby.PUBLISHEDAT, "corona"));
+        System.out.println(urlBuilder(Endpoint.EVERYTHING, Country.UNITED_KINGDOM,Language.ENGLISH,Category.GENERAL,Sortby.PUBLISHED_AT, "corona"));
         NewsAPI news = new NewsAPI();
 
 
-        System.out.println(news.parsedArticle(urlBuilder(Endpoint.EVERYTHING, Country.UNITED_KINGDOM,Language.ENGLISH,Category.GENERAL,Sortby.PUBLISHEDAT, "corona")));
+        System.out.println(news.parsedArticle(urlBuilder(Endpoint.EVERYTHING, Country.UNITED_KINGDOM,Language.ENGLISH,Category.GENERAL,Sortby.PUBLISHED_AT, "corona")));
     }
 
 }
