@@ -25,7 +25,7 @@ public class AppControllerTest {
 
     public void filterListTest1(){
         String trueQuery = "Murderer";
-        List<Article> actualFilterList = AppController.filterList(trueQuery,testList);
+        List<Article> actualFilterList = AppController.StreamFilterList(trueQuery,testList);
         assertEquals(1, actualFilterList.size());
     }
 
@@ -35,7 +35,7 @@ public class AppControllerTest {
     public void filterListTest2(){
         Article a12 = new Article("Amy B. McClaw","Murderer says detective ruined his reputation");
         String trueQuery = "Murderer";
-        List<Article> actualFilterList = AppController.filterList(trueQuery,testList); // -> using the Method that should be tested
+        List<Article> actualFilterList = AppController.StreamFilterList(trueQuery,testList); // -> using the Method that should be tested
         List<Article> expectedFilterList = new ArrayList<>(); // -> what we think the filtered list should give back
         expectedFilterList.add(a12);
 
@@ -47,7 +47,7 @@ public class AppControllerTest {
 
     public void filterListTest3(){
         String trueQuery = "Bugs";
-        List<Article> actualFilterList = AppController.filterList(trueQuery,testList); // -> using the Method that should be tested
+        List<Article> actualFilterList = AppController.StreamFilterList(trueQuery,testList); // -> using the Method that should be tested
 
         assertEquals(1, actualFilterList.size());
     }
@@ -58,7 +58,7 @@ public class AppControllerTest {
     public void filterListTest4(){
         Article a14 = new Article("Wayne Hansen","Bugs flying around with wings are flying bugs");
         String trueQuery = "Bugs";
-        List<Article> actualFilterList = AppController.filterList(trueQuery,testList); // -> using the Method that should be tested
+        List<Article> actualFilterList = AppController.StreamFilterList(trueQuery,testList); // -> using the Method that should be tested
         List<Article> expectedFilterList = new ArrayList<>(); // -> what we think the filtered list should give back
         expectedFilterList.add(a14);
 
@@ -70,7 +70,7 @@ public class AppControllerTest {
 
     public void filterListTest5(){
         String trueQuery = "to";
-        List<Article> actualFilterList = AppController.filterList(trueQuery,testList); // -> using the Method that should be tested
+        List<Article> actualFilterList = AppController.StreamFilterList(trueQuery,testList); // -> using the Method that should be tested
 
         assertEquals(5, actualFilterList.size());
     }
@@ -87,7 +87,7 @@ public class AppControllerTest {
 
 
         String trueQuery = "to";
-        List<Article> actualFilterList = AppController.filterList(trueQuery,testList); // -> using the Method that should be tested
+        List<Article> actualFilterList = AppController.StreamFilterList(trueQuery,testList); // -> using the Method that should be tested
         List<Article> expectedFilterList = new ArrayList<>(); // -> what we think the filtered list should give back
 
         expectedFilterList.add(a04); expectedFilterList.add(a05); expectedFilterList.add(a07);
@@ -101,7 +101,7 @@ public class AppControllerTest {
 
     public void filterListTest7(){
         String trueQuery = "xzy";
-        List<Article> actualFilterList = AppController.filterList(trueQuery,testList); // -> using the Method that should be tested
+        List<Article> actualFilterList = AppController.StreamFilterList(trueQuery,testList); // -> using the Method that should be tested
 
         assertEquals(0,actualFilterList.size());
     }
@@ -110,7 +110,7 @@ public class AppControllerTest {
     @DisplayName("filterListTest8: if query is null")
 
     public void filterListTest8(){
-        List<Article> actualFilterList = AppController.filterList(null, testList);
+        List<Article> actualFilterList = AppController.StreamFilterList(null, testList);
         assertEquals(0, actualFilterList.size());
     }
 
@@ -118,7 +118,7 @@ public class AppControllerTest {
     @DisplayName("filterListTest9: if list is null")
 
     public void filterListTest9(){
-        List<Article> actualFilterList = AppController.filterList("A", null);
+        List<Article> actualFilterList = AppController.StreamFilterList("A", null);
         assertEquals(0, actualFilterList.size());
     }
 
@@ -126,7 +126,7 @@ public class AppControllerTest {
     @DisplayName("filterListTest10: if list & query are null")
 
     public void filterListTest10(){
-        List<Article> actualFilterList = AppController.filterList(null, null);
+        List<Article> actualFilterList = AppController.StreamFilterList(null, null);
         assertEquals(0, actualFilterList.size());
     }
 

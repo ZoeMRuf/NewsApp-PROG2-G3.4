@@ -8,6 +8,8 @@ import API_Enums.Sortby;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
+import java.util.stream.Collectors;
 
 public class AppController {
     private List<Article> articles;
@@ -58,6 +60,20 @@ public class AppController {
             return new ArrayList<>();
         }
         return articles;
+    }
+
+    //Stream Filter
+    protected static List<Article> StreamFilterList(String query, List<Article> articles){
+
+        if (query != null && articles != null){
+            List<Article> filteredList = articles.stream()
+                    .filter(article -> article.getTitle().toLowerCase().contains(query.toLowerCase()))
+                    .collect(Collectors.toList());
+            return filteredList;
+        }
+        else {
+            return new ArrayList<>();
+        }
     }
 
     //filter that is addressed over the package -> useful for getTopHeadlinesAustria & getAllNewsBitcoin
