@@ -63,7 +63,7 @@ public class AppController {
     }
 
     //Stream Filter
-    protected static List<Article> StreamFilterList(String query, List<Article> articles){
+    protected static List<Article> filterList(String query, List<Article> articles){
 
         if (query != null && articles != null){
             List<Article> filteredList = articles.stream()
@@ -75,6 +75,8 @@ public class AppController {
             return new ArrayList<>();
         }
     }
+
+    /*
 
     //filter that is addressed over the package -> useful for getTopHeadlinesAustria & getAllNewsBitcoin
     protected static List<Article> filterList(String query, List<Article> articles){
@@ -108,6 +110,10 @@ public class AppController {
             return new ArrayList<>();
         }
     }
+
+     */
+
+
 
     public static List<Article> generateMockList(){
 
