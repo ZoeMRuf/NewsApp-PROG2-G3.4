@@ -24,7 +24,7 @@ public enum Country {
     HUNGARY("hu"),
     INDONESIA("id"),
     IRELAND("ie"),
-    ISRAEL("IL"),
+    ISRAEL("il"),
     INDIEN("in"),
     ITALY("it"),
     JAPAN("jp"),
