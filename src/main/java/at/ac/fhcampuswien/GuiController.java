@@ -7,6 +7,8 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseDragEvent;
 import javafx.scene.input.MouseEvent;
@@ -19,10 +21,17 @@ public class GuiController {
     private Scene scene;
     private Parent root;
 
+    private AppController ctl = new AppController();
+
+
     @FXML
     private Button start_button;
     @FXML
     private Button back_button;
+    @FXML
+    private ScrollPane scroll_pane;
+    @FXML
+    private Label number_articles;
 
     public void changeArticleScene(MouseEvent mouseEvent) throws IOException {
         root = FXMLLoader.load(getClass().getResource("/ArticleScene.fxml"));
@@ -55,5 +64,22 @@ public class GuiController {
 
     public void changeBackButtonBlack(MouseEvent mouseEvent) {
         back_button.setGraphic(new ImageView("/Back_Black.png"));
+    }
+
+    public void topHeadlineArticles(ActionEvent actionEvent) {
+
+        String articleString = ctl.getTopHeadlinesAustria().toString().replaceAll("\\[", "").replaceAll("\\]", "");
+        Label label = new Label(articleString);
+
+        scroll_pane.setContent(label);
+        number_articles.setText("Number of articles: " + ctl.getArticleCount());
+    }
+
+    public void bitcoinArticles(ActionEvent actionEvent) {
+        String articleString = ctl.getAllNewsBitcoin().toString().replaceAll("\\[", "").replaceAll("\\]", "");
+        Label label = new Label(articleString);
+
+        scroll_pane.setContent(label);
+        number_articles.setText("Number of articles: " + ctl.getArticleCount());
     }
 }
