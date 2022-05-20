@@ -10,7 +10,8 @@ public class Menu {
     private static final String EXIT_MESSAGE = "Bye bye! AND DON'T FORGET TO SUBSCRIBE";
 
     //Methods
-    public void start(){
+    public void start() throws NewAPIException {
+
         controller = new AppController();
 
         printMenu();
@@ -29,7 +30,6 @@ public class Menu {
             }
             while(!input.equals("a") && !input.equals("b") && !input.equals("y") && !input.equals("q"));
         }while (!input.equals("q"));
-
     }
 
     private void handleInput(String input){
@@ -81,7 +81,11 @@ public class Menu {
         System.out.println(INVALID_INPUT_MESSAGE);
     }
 
-    private static void printMenu(){
+    private static void printMenu() throws NewAPIException {
+
+        if (true){
+            throw new NewAPIException("HEEEEEEEEEEELP");
+        }
 
         System.out.println("******************************");
         System.out.println("  *   Welcome to NewsApp   *  ");

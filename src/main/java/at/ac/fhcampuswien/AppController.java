@@ -8,7 +8,6 @@ import API_Enums.Sortby;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 import java.util.stream.Collectors;
 
 public class AppController {
@@ -38,7 +37,7 @@ public class AppController {
             articles = news.parsedArticle(news.urlBuilder(Country.AUSTRIA, Category.GENERAL, "corona"));
         }
         catch (IOException e){
-            System.out.println("FAIL --> =(");
+            System.out.println(e.getMessage());
         }
 
         if (articles == null){
@@ -53,7 +52,7 @@ public class AppController {
             articles = news.parsedArticle(news.urlBuilder(Language.German, Sortby.PUBLISHED_AT, "bitcoin"));
         }
         catch (IOException e){
-            System.out.println("FAIL --> =(");
+            System.out.println(e.getMessage());
         }
 
         if (articles == null){
