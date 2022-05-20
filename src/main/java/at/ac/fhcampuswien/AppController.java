@@ -61,6 +61,26 @@ public class AppController {
         return articles;
     }
 
+    public String getMostPopularSources(){
+        return "Hello";
+    }
+
+    public String getLongestAutorName(){
+        return "Steward";
+    }
+
+    public int getNewYorkTimesArticleCount(){
+        return 42;
+    }
+
+    public List<Article> getShortHeadlines(){
+        return articles;
+    }
+
+    public List<Article> sortedByDescription(){
+        return articles;
+    }
+
     //Stream Filter
     protected static List<Article> StreamFilterList(String query, List<Article> articles){
 
