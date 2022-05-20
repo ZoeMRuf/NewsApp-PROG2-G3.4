@@ -39,6 +39,15 @@ public class Article {
         return content;
     }
 
+    public int getContentLength(){
+        return content.length();
+    }
+
+    public String getContentAlphabet(){
+        String[] firstWord = content.split(" ");
+        return firstWord[0] + " " + firstWord[1];
+    }
+
     public String getSource() {
         return Source;
     }

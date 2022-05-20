@@ -65,11 +65,12 @@ public class Menu {
     }
 
     private void getTopHeadlinesAustria(AppController ctrl){
-        System.out.println(ctrl.getTopHeadlinesAustria());
+        ctrl.getTopHeadlinesAustria().forEach(System.out::println);
     }
 
     private void getAllNewsBitcoin(AppController ctrl){
-        System.out.println(ctrl.getAllNewsBitcoin());
+        ctrl.getAllNewsBitcoin().forEach(System.out::println);
+
     }
 
     //this static Methods can only be used in this Class
@@ -83,7 +84,7 @@ public class Menu {
 
     private static void printMenu() throws NewAPIException {
 
-        if (true){
+        if (false){
             throw new NewAPIException("HEEEEEEEEEEELP");
         }
 

@@ -7,6 +7,8 @@ import API_Enums.Sortby;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -78,7 +80,17 @@ public class AppController {
     }
 
     public List<Article> sortedByDescription(){
-        return articles;
+
+        /*
+        Source: https://howtodoinjava.com/java/sort/sort-on-multiple-fields/
+         */
+
+        Comparator<Article> sortByLength = Comparator.comparingInt(Article::getContentLength);
+        Comparator<Article> sortByAlphabet = Comparator.comparing(Article::getContent);
+
+        Comparator<Article> sortedByLengthAndAlphabet = sortByLength.thenComparing(sortByAlphabet);
+
+        return articles.stream().sorted(sortedByLengthAndAlphabet).collect(Collectors.toList());
     }
 
     //Stream Filter
@@ -153,6 +165,22 @@ public class AppController {
         MockList.add(a11); MockList.add(a12); MockList.add(a13); MockList.add(a14); MockList.add(a15);
 
         return MockList;
+    }
+
+    public static void main(String[] args) {
+
+        AppController cont = new AppController();
+
+        cont.getAllNewsBitcoin();
+
+        List<Article> b = cont.sortedByDescription();
+
+        System.out.println(b);
+
+        for (Article article : b) {
+            System.out.println(article.getContentLength() + " " + article.getContent());
+        }
+
     }
 
 }
