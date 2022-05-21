@@ -82,8 +82,8 @@ public class Article {
         if (this.getTitle() != null){
             string.append("Title: ").append(this.getTitle()).append("\n");
         }
-        if (this.getContent() != null){
-            string.append("Content: ").append(this.getContent()).append("\n");
+        if (this.getDescription() != null){
+            string.append("Description: ").append(this.getDescription()).append("\n");
         }
         if (this.getSource() != null){
             string.append("Source: ").append(this.getSource()).append("\n");
