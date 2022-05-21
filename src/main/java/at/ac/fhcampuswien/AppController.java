@@ -79,19 +79,20 @@ public class AppController {
         return articles;
     }
 
-    public List<Article> sortedByDescription(){
+    public List<Article> sortedByDescription() {
 
         /*
         Source: https://howtodoinjava.com/java/sort/sort-on-multiple-fields/
          */
 
         Comparator<Article> sortByLength = Comparator.comparingInt(Article::getDescriptionLength);
-        //Comparator<Article> sortByAlphabet = Comparator.comparing(Article::getDescription);
+        Comparator<Article> sortByAlphabet = Comparator.comparing(Article::getDescription);
 
-        //Comparator<Article> sortedByLengthAndAlphabet = sortByLength.thenComparing(sortByAlphabet);
+        Comparator<Article> sortedByLengthAndAlphabet = sortByLength.thenComparing(sortByAlphabet);
 
-        return articles.stream().sorted(sortByLength).collect(Collectors.toList());
+        return articles.stream().sorted(sortedByLengthAndAlphabet).collect(Collectors.toList());
     }
+
 
     //Stream Filter
     protected static List<Article> StreamFilterList(String query, List<Article> articles){
@@ -176,7 +177,7 @@ public class AppController {
         List<Article> b = cont.sortedByDescription();
 
         for (Article article : b) {
-            System.out.println(article.getDescriptionLength() + " " + article.getDescription());
+            System.out.println(article.getDescriptionLength() + " " + article.getDescription() + "\n -----------------------\n");
         }
 
     }
