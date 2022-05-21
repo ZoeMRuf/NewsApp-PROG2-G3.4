@@ -4,6 +4,7 @@ public class Article {
     //Attributes
     private String author;
     private String title;
+    private String description;
     private String content;
     private String Source;
     private String url;
@@ -16,14 +17,15 @@ public class Article {
         this.title = title;
     }
 
-    public Article(String author, String title, String content, String source, String url, String urlToImage, String publishedAt) {
+    public Article(String author, String title, String description, String url, String urlToImage, String publishedAt, String content, String source) {
         this.author = author;
         this.title = title;
-        this.content = content;
+        this.description = description;
         this.Source = source;
         this.url = url;
         this.urlToImage = urlToImage;
         this.publishedAt = publishedAt;
+        this.content = content;
     }
 
     //Getter that can be used in all Classes
@@ -35,18 +37,19 @@ public class Article {
         return this.title;
     }
 
-    public String getContent() {
-        return content;
-    }
+    public String getDescription() {
+        if (description == null){
+            return "Empty";
+        }
+        return description;
+    } // -------> Exeption Handeling
 
-    public int getContentLength(){
-        return content.length();
-    }
-
-    public String getContentAlphabet(){
-        String[] firstWord = content.split(" ");
-        return firstWord[0] + " " + firstWord[1];
-    }
+    public int getDescriptionLength(){
+        if (description == null){
+            return 0;
+        }
+        return description.length();
+    }  // -------> Exeption Handeling
 
     public String getSource() {
         return Source;
@@ -62,6 +65,10 @@ public class Article {
 
     public String getPublishedAt() {
         return publishedAt;
+    }
+
+    public String getContent() {
+        return content;
     }
 
     @Override

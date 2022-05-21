@@ -85,12 +85,12 @@ public class AppController {
         Source: https://howtodoinjava.com/java/sort/sort-on-multiple-fields/
          */
 
-        Comparator<Article> sortByLength = Comparator.comparingInt(Article::getContentLength);
-        Comparator<Article> sortByAlphabet = Comparator.comparing(Article::getContent);
+        Comparator<Article> sortByLength = Comparator.comparingInt(Article::getDescriptionLength);
+        //Comparator<Article> sortByAlphabet = Comparator.comparing(Article::getDescription);
 
-        Comparator<Article> sortedByLengthAndAlphabet = sortByLength.thenComparing(sortByAlphabet);
+        //Comparator<Article> sortedByLengthAndAlphabet = sortByLength.thenComparing(sortByAlphabet);
 
-        return articles.stream().sorted(sortedByLengthAndAlphabet).collect(Collectors.toList());
+        return articles.stream().sorted(sortByLength).collect(Collectors.toList());
     }
 
     //Stream Filter
@@ -175,10 +175,8 @@ public class AppController {
 
         List<Article> b = cont.sortedByDescription();
 
-        System.out.println(b);
-
         for (Article article : b) {
-            System.out.println(article.getContentLength() + " " + article.getContent());
+            System.out.println(article.getDescriptionLength() + " " + article.getDescription());
         }
 
     }
