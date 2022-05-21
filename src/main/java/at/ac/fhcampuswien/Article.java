@@ -33,6 +33,13 @@ public class Article {
         return this.author;
     }
 
+    public int getAuthorLength(){
+        if (author == null){
+            return 0;
+        }
+        return author.length();
+    }  // -------> Exeption Handeling
+
     public String getTitle(){
         return this.title;
     }

@@ -6,10 +6,7 @@ import API_Enums.Language;
 import API_Enums.Sortby;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class AppController {
@@ -68,7 +65,12 @@ public class AppController {
     }
 
     public String getLongestAutorName(){
-        return "Steward";
+        Article longest = articles.stream()
+                .max(Comparator.comparingInt(Article::getAuthorLength))
+                .orElseThrow(NoSuchElementException::new);
+
+        return longest.getAuthor();
+
     }
 
     public int getNewYorkTimesArticleCount(){
@@ -173,12 +175,17 @@ public class AppController {
         AppController cont = new AppController();
 
         cont.getAllNewsBitcoin();
-
+        /*
         List<Article> b = cont.sortedByDescription();
 
         for (Article article : b) {
             System.out.println(article.getDescriptionLength() + " " + article.getDescription() + "\n -----------------------\n");
         }
+
+         */
+
+        String b = cont.getLongestAutorName();
+        System.out.println(b);
 
     }
 
