@@ -64,13 +64,12 @@ public class AppController {
         return "Hello";
     }
 
-    public String getLongestAutorName(){
+    public String getLongestAuthorName(){
         Article longest = articles.stream()
                 .max(Comparator.comparingInt(Article::getAuthorLength))
                 .orElseThrow(NoSuchElementException::new);
 
         return longest.getAuthor();
-
     }
 
     public int getNewYorkTimesArticleCount(){
@@ -184,7 +183,7 @@ public class AppController {
 
          */
 
-        String b = cont.getLongestAutorName();
+        String b = cont.getLongestAuthorName();
         System.out.println(b);
 
     }

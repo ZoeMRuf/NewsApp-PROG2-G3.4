@@ -104,6 +104,9 @@ public class Article {
         if (this.getPublishedAt() != null){
             string.append("Published at: ").append(this.getPublishedAt()).append("\n");
         }
+        if (this.getContent() != null){
+            string.append("Content: ").append(this.getContent()).append("\n");
+        }
 
         return string.toString();
     }
