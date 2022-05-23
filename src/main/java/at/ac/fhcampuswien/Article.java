@@ -6,7 +6,7 @@ public class Article {
     private String title;
     private String description;
     private String content;
-    private String Source;
+    private Source source;
     private String url;
     private String urlToImage;
     private String publishedAt;
@@ -17,15 +17,14 @@ public class Article {
         this.title = title;
     }
 
-    public Article(String author, String title, String description, String url, String urlToImage, String publishedAt, String content, String source) {
+    public Article(String author, String title, String content, Source source, String url, String urlToImage, String publishedAt) {
         this.author = author;
         this.title = title;
-        this.description = description;
-        this.Source = source;
+        this.content = content;
+        this.source = source;
         this.url = url;
         this.urlToImage = urlToImage;
         this.publishedAt = publishedAt;
-        this.content = content;
     }
 
     //Getter that can be used in all Classes
@@ -58,8 +57,12 @@ public class Article {
         return description.length();
     }  // -------> Exeption Handeling
 
-    public String getSource() {
-        return Source;
+    public Object getSourceId() {
+        return source.getId();
+    }
+
+    public Object getSourceName() {
+        return source.getName();
     }
 
     public String getUrl() {
@@ -92,8 +95,8 @@ public class Article {
         if (this.getDescription() != null){
             string.append("Description: ").append(this.getDescription()).append("\n");
         }
-        if (this.getSource() != null){
-            string.append("Source: ").append(this.getSource()).append("\n");
+        if (this.getSourceName() != null){
+            string.append("Source: ").append(this.getSourceName()).append("\n");
         }
         if (this.getUrl() != null){
             string.append("URL: ").append(this.getUrl()).append("\n");
@@ -103,9 +106,6 @@ public class Article {
         }
         if (this.getPublishedAt() != null){
             string.append("Published at: ").append(this.getPublishedAt()).append("\n");
-        }
-        if (this.getContent() != null){
-            string.append("Content: ").append(this.getContent()).append("\n");
         }
 
         return string.toString();
