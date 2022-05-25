@@ -32,6 +32,8 @@ public class GuiController {
     private ScrollPane scroll_pane;
     @FXML
     private Label number_articles;
+    @FXML
+    private Label newYorkTimes;
 
     public void changeArticleScene(MouseEvent mouseEvent) throws IOException {
         root = FXMLLoader.load(getClass().getResource("/ArticleScene.fxml"));
@@ -67,12 +69,12 @@ public class GuiController {
     }
 
     public void topHeadlineArticles(ActionEvent actionEvent) {
-
         String articleString = ctl.getTopHeadlinesAustria().toString().replaceAll("\\[", "").replaceAll("\\]", "");
         Label label = new Label(articleString);
 
         scroll_pane.setContent(label);
         number_articles.setText("Number of articles: " + ctl.getArticleCount());
+        newYorkTimes.setText("\"New York Times\" articles: " + ctl.getNewYorkTimesArticleCount());
     }
 
     public void bitcoinArticles(ActionEvent actionEvent) {
@@ -81,5 +83,6 @@ public class GuiController {
 
         scroll_pane.setContent(label);
         number_articles.setText("Number of articles: " + ctl.getArticleCount());
+        newYorkTimes.setText("\"New York Times\" articles: " + ctl.getNewYorkTimesArticleCount());
     }
 }
