@@ -52,10 +52,14 @@ public class Article {
     } // -------> Exeption Handeling
 
     public int getDescriptionLength(){
-        if (description == null){
+        try {
+            return description.length();
+        }
+        catch (NullPointerException e){
+            e.getMessage();
+            System.out.println("Description of the Article is null");
             return 0;
         }
-        return description.length();
     }  // -------> Exeption Handeling
 
     public Object getSourceId() {
