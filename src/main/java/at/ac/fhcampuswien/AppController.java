@@ -8,6 +8,7 @@ import API_Enums.Sortby;
 import java.io.IOException;
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class AppController {
     private List<Article> articles;
@@ -73,7 +74,12 @@ public class AppController {
     }
 
     public int getNewYorkTimesArticleCount(){
-        return 42;
+
+        List<Article> streamedArticle = articles.stream()
+                .filter(article -> article.getSourceName().toString().toLowerCase().contains("newyorktimes"))
+                .collect(Collectors.toList());
+
+        return streamedArticle.size();
     }
 
     public List<Article> getShortHeadlines(){
