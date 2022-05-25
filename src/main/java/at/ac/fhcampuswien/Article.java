@@ -17,14 +17,15 @@ public class Article {
         this.title = title;
     }
 
-    public Article(String author, String title, String content, Source source, String url, String urlToImage, String publishedAt) {
+    public Article(String author, String title, String description, Source source, String url, String urlToImage, String publishedAt, String content) {
         this.author = author;
         this.title = title;
-        this.content = content;
+        this.description = description;
         this.source = source;
         this.url = url;
         this.urlToImage = urlToImage;
         this.publishedAt = publishedAt;
+        this.content = content;
     }
 
     //Getter that can be used in all Classes
@@ -106,6 +107,9 @@ public class Article {
         }
         if (this.getPublishedAt() != null){
             string.append("Published at: ").append(this.getPublishedAt()).append("\n");
+        }
+        if (this.getContent() != null){
+            string.append("Content: ").append(this.getContent()).append("\n");
         }
 
         return string.toString();

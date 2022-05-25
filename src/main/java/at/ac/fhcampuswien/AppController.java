@@ -174,17 +174,12 @@ public class AppController {
         AppController cont = new AppController();
 
         cont.getAllNewsBitcoin();
-        /*
+
         List<Article> b = cont.sortedByDescription();
 
         for (Article article : b) {
-            System.out.println(article.getDescriptionLength() + " " + article.getDescription() + "\n -----------------------\n");
+            System.out.println(article.getSourceName() + "\n -----------------------\n");
         }
-
-         */
-
-        String b = cont.getLongestAuthorName();
-        System.out.println(b);
 
     }
 
