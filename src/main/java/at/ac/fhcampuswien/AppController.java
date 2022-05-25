@@ -62,13 +62,29 @@ public class AppController {
     }
 
     public String getMostPopularSources(){
-        return "Hello";
+
+        /*
+        Source: https://stackoverflow.com/questions/69608912/java-stream-find-most-frequent-element-based-on-a-specific-field
+         */
+
+        String mostSourceName = null;
+        int SourceFrequency = 0;
+        Map<String, Integer> map = new HashMap<>();
+
+        for (Article a : articles){
+            if (map.merge(a.getSourceName(), 1, Integer::sum) > SourceFrequency){
+                SourceFrequency = map.get(a.getSourceName());
+                mostSourceName = a.getSourceName();
+            }
+        }
+        return mostSourceName;
     }
 
     public String getLongestAuthorName(){
         Article longest = articles.stream()
                 .max(Comparator.comparingInt(Article::getAuthorLength))
-                .orElseThrow(NoSuchElementException::new);
+                .orElse(null);
+                //.orElseThrow(NoSuchElementException::new);
 
         return longest.getAuthor();
     }
@@ -83,7 +99,10 @@ public class AppController {
     }
 
     public List<Article> getShortHeadlines(){
-        return articles;
+
+        return articles.stream()
+                .filter(article -> article.getTitle().length() < 15)
+                .collect(Collectors.toList());
     }
 
     public List<Article> sortedByDescription() {
@@ -173,20 +192,6 @@ public class AppController {
         MockList.add(a11); MockList.add(a12); MockList.add(a13); MockList.add(a14); MockList.add(a15);
 
         return MockList;
-    }
-
-    public static void main(String[] args) {
-
-        AppController cont = new AppController();
-
-        cont.getAllNewsBitcoin();
-
-        List<Article> b = cont.sortedByDescription();
-
-        for (Article article : b) {
-            System.out.println(article.getSourceName() + "\n -----------------------\n");
-        }
-
     }
 
 }

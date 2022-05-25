@@ -62,7 +62,7 @@ public class Article {
         return source.getId();
     }
 
-    public Object getSourceName() {
+    public String getSourceName() {
         return source.getName();
     }
 
