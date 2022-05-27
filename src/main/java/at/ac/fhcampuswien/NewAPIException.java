@@ -9,6 +9,10 @@ public class NewAPIException extends Exception{
         this.errorMessage = errorMessage;
     }
 
+    public NewAPIException(){
+
+    }
+
     @Override
     public String getMessage(){
         return this.errorMessage + " There is an Error. Please don't ask us we have no clue why!";

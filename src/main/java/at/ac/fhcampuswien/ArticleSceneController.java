@@ -118,8 +118,13 @@ public class ArticleSceneController{
     }
 
     public void sortByD(ActionEvent actionevent) {
-        String articleString = ctl.sortedByDescription()
-                .toString().replaceAll("\\[", "").replaceAll("\\]", "");
+        String articleString = null;
+        try {
+            articleString = ctl.sortedByDescription()
+                    .toString().replaceAll("\\[", "").replaceAll("\\]", "");
+        } catch (NewAPIException e) {
+            e.getMessage();
+        }
         Label label = new Label(articleString);
         scroll_pane.setContent(label);
     }

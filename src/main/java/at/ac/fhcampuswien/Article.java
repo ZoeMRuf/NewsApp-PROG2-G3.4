@@ -51,14 +51,19 @@ public class Article {
         return description;
     } // -------> Exeption Handeling
 
-    public int getDescriptionLength(){
+    public int getDescriptionLength() throws NewAPIException{
         try {
             return description.length();
         }
-        catch (NullPointerException e){
+        catch (Exception e){
+            throw new NewAPIException("Hallo");
+
+            /*
             e.getMessage();
             System.out.println("Description of the Article is null");
             return 0;
+
+             */
         }
     }  // -------> Exeption Handeling
 

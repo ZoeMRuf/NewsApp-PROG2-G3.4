@@ -102,7 +102,7 @@ public class AppController {
                 .collect(Collectors.toList());
     }
 
-    public List<Article> sortedByDescription() {
+    public List<Article> sortedByDescription() throws NewAPIException{
 
         /*
         Source: https://howtodoinjava.com/java/sort/sort-on-multiple-fields/
