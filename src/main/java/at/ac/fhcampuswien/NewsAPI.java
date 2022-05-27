@@ -46,7 +46,9 @@ public class NewsAPI {
             stb.append(sort.sortby);
         }
 
-        stb.append("&q=").append(query);
+        if(query != null) {
+            stb.append("&q=").append(query);
+        }
 
         stb.append("&apiKey=");
         stb.append(API_KEY);

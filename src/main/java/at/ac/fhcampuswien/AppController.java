@@ -1,9 +1,6 @@
 package at.ac.fhcampuswien;
 
-import API_Enums.Category;
-import API_Enums.Country;
-import API_Enums.Language;
-import API_Enums.Sortby;
+import API_Enums.*;
 
 import java.io.IOException;
 import java.util.*;
@@ -117,6 +114,20 @@ public class AppController {
         Comparator<Article> sortedByLengthAndAlphabet = sortByLength.thenComparing(sortByAlphabet);
 
         return articles.stream().sorted(sortedByLengthAndAlphabet).collect(Collectors.toList());
+    }
+
+    public List<Article> getConfiguredArticles(Endpoint endpoint, Country coun, Language lang, Category cate, Sortby sort, String query){
+        try{
+            articles = news.parsedArticle(news.urlBuilder(endpoint, coun, lang, cate, sort, query));
+        }
+        catch (IOException e){
+            System.out.println(e.getMessage());
+        }
+
+        if (articles == null){
+            return new ArrayList<>();
+        }
+        return articles;
     }
 
 
