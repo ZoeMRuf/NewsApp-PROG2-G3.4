@@ -48,7 +48,7 @@ public class App extends Application {
     public void start(Stage stage) throws Exception {
 
         Parent root = FXMLLoader.load(getClass().getResource("/StartMenu.fxml"));
-        Scene scene = new Scene(root,900,600);
+        Scene scene = new Scene(root,1000,700);
 
         Image newsIcon = new Image(getClass().getResource("/NewsIcon.png").toExternalForm());
         stage.getIcons().add(newsIcon);
