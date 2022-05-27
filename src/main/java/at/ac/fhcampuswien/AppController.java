@@ -6,10 +6,9 @@ import API_Enums.Language;
 import API_Enums.Sortby;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
+import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class AppController {
     private List<Article> articles;
@@ -38,7 +37,7 @@ public class AppController {
             articles = news.parsedArticle(news.urlBuilder(Country.AUSTRIA, Category.GENERAL, "corona"));
         }
         catch (IOException e){
-            System.out.println("FAIL --> =(");
+            System.out.println(e.getMessage());
         }
 
         if (articles == null){
@@ -53,7 +52,7 @@ public class AppController {
             articles = news.parsedArticle(news.urlBuilder(Language.German, Sortby.PUBLISHED_AT, "bitcoin"));
         }
         catch (IOException e){
-            System.out.println("FAIL --> =(");
+            System.out.println(e.getMessage());
         }
 
         if (articles == null){
@@ -61,6 +60,65 @@ public class AppController {
         }
         return articles;
     }
+
+    public String getMostPopularSources(){
+
+        /*
+        Source: https://stackoverflow.com/questions/69608912/java-stream-find-most-frequent-element-based-on-a-specific-field
+         */
+
+        String mostSourceName = null;
+        int SourceFrequency = 0;
+        Map<String, Integer> map = new HashMap<>();
+
+        for (Article a : articles){
+            if (map.merge(a.getSourceName(), 1, Integer::sum) > SourceFrequency){
+                SourceFrequency = map.get(a.getSourceName());
+                mostSourceName = a.getSourceName();
+            }
+        }
+        return mostSourceName;
+    }
+
+    public String getLongestAuthorName(){
+        Article longest = articles.stream()
+                .max(Comparator.comparingInt(Article::getAuthorLength))
+                .orElse(null);
+                //.orElseThrow(NoSuchElementException::new);
+
+        return longest.getAuthor();
+    }
+
+    public int getNewYorkTimesArticleCount(){
+
+        List<Article> streamedArticle = articles.stream()
+                .filter(article -> article.getSourceName().toString().toLowerCase().contains("newyorktimes"))
+                .collect(Collectors.toList());
+
+        return streamedArticle.size();
+    }
+
+    public List<Article> getShortHeadlines(){
+
+        return articles.stream()
+                .filter(article -> article.getTitle().length() < 15)
+                .collect(Collectors.toList());
+    }
+
+    public List<Article> sortedByDescription() {
+
+        /*
+        Source: https://howtodoinjava.com/java/sort/sort-on-multiple-fields/
+         */
+
+        Comparator<Article> sortByLength = Comparator.comparingInt(Article::getDescriptionLength);
+        Comparator<Article> sortByAlphabet = Comparator.comparing(Article::getDescription);
+
+        Comparator<Article> sortedByLengthAndAlphabet = sortByLength.thenComparing(sortByAlphabet);
+
+        return articles.stream().sorted(sortedByLengthAndAlphabet).collect(Collectors.toList());
+    }
+
 
     //Stream Filter
     protected static List<Article> StreamFilterList(String query, List<Article> articles){
