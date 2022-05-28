@@ -53,7 +53,7 @@ public class AppController {
         Source: https://stackoverflow.com/questions/69608912/java-stream-find-most-frequent-element-based-on-a-specific-field
          */
 
-        String mostSourceName = null;
+        String mostSourceName = "";
         int SourceFrequency = 0;
         Map<String, Integer> map = new HashMap<>();
 
