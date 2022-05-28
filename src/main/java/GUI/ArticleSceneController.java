@@ -39,15 +39,12 @@ public class ArticleSceneController{
     private String topHeadlineQuery = "corona";
     private String everythingQuery = "bitcoin";
 
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
-    private AppController ctl = new AppController();
+    private final AppController ctl = new AppController();
 
     public void changeStartMenu(MouseEvent mouseEvent) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("/StartMenu.fxml"));
-        stage = (Stage)((Node)mouseEvent.getSource()).getScene().getWindow();
-        scene = new Scene(root);
+        Parent root = FXMLLoader.load(getClass().getResource("/StartMenu.fxml"));
+        Stage stage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }

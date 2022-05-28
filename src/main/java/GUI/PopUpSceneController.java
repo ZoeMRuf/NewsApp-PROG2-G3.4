@@ -44,10 +44,6 @@ public class PopUpSceneController implements Initializable {
     private String topHeadlineQuery = "corona";
     private String everythingQuery = "bitcoin";
 
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
-
 
     public static void display(String title, ActionEvent actionEvent) throws IOException {
         Stage stage;
@@ -92,12 +88,12 @@ public class PopUpSceneController implements Initializable {
         }
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/ArticleScene.fxml"));
-        root = loader.load();
+        Parent root = loader.load();
         ArticleSceneController articleSceneController = loader.getController();
         articleSceneController.currentState(currentCountry, currentLanguage, currentSortBy, currentCategory, topHeadlineQuery, everythingQuery);
 
-        stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
-        scene = new Scene(root);
+        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }

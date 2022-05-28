@@ -16,14 +16,10 @@ public class StartMenuController {
     @FXML
     private ImageView start;
 
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
-
     public void changeArticleScene(MouseEvent mouseEvent) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("/ArticleScene.fxml"));
-        stage = (Stage)((Node)mouseEvent.getSource()).getScene().getWindow();
-        scene = new Scene(root);
+        Parent root = FXMLLoader.load(getClass().getResource("/ArticleScene.fxml"));
+        Stage stage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
