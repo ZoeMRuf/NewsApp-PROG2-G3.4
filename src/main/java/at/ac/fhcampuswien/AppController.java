@@ -1,11 +1,8 @@
 package at.ac.fhcampuswien;
 
 import API_Enums.*;
-
-import java.io.IOException;
 import java.util.*;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class AppController {
     private List<Article> articles;
@@ -29,30 +26,22 @@ public class AppController {
 
     //main AppController Methods
     public List<Article> getTopHeadlinesAustria(){
-
         try{
             articles = news.parsedArticle(news.urlBuilder(Country.AUSTRIA, Category.GENERAL, "corona"));
         }
-        catch (IOException e){
+        catch (NullPointerException | NewAPIException e){
             System.out.println(e.getMessage());
-        }
-
-        if (articles == null){
             return new ArrayList<>();
         }
         return articles;
     }
 
     public List<Article> getAllNewsBitcoin(){
-
         try{
-            articles = news.parsedArticle(news.urlBuilder(Language.German, Sortby.PUBLISHED_AT, "bitcoin"));
+            articles = news.parsedArticle(news.urlBuilder(Language.GERMAN, Sortby.PUBLISHED_AT, "bitcoin"));
         }
-        catch (IOException e){
+        catch (NullPointerException | NewAPIException e){
             System.out.println(e.getMessage());
-        }
-
-        if (articles == null){
             return new ArrayList<>();
         }
         return articles;
@@ -78,31 +67,27 @@ public class AppController {
     }
 
     public String getLongestAuthorName(){
-        Article longest = articles.stream()
-                .max(Comparator.comparingInt(Article::getAuthorLength))
-                .orElse(null);
-                //.orElseThrow(NoSuchElementException::new);
-
-        return longest.getAuthor();
+        try{
+            return articles.stream().max(Comparator.comparingInt(Article::getAuthorLength)).orElse(null).getAuthor();
+        }
+        catch (NullPointerException e){
+            System.out.println(e.getMessage());
+            return "";
+        }
     }
 
     public int getNewYorkTimesArticleCount(){
-
         List<Article> streamedArticle = articles.stream()
-                .filter(article -> article.getSourceName().toString().toLowerCase().contains("newyorktimes"))
+                .filter(article -> article.getSourceName().toLowerCase().contains("newyorktimes"))
                 .collect(Collectors.toList());
-
         return streamedArticle.size();
     }
 
     public List<Article> getShortHeadlines(){
-
-        return articles.stream()
-                .filter(article -> article.getTitle().length() < 15)
-                .collect(Collectors.toList());
+        return articles.stream().filter(article -> article.getTitle().length() < 15).collect(Collectors.toList());
     }
 
-    public List<Article> sortedByDescription() throws NewAPIException{
+    public List<Article> sortedByDescription(){
 
         /*
         Source: https://howtodoinjava.com/java/sort/sort-on-multiple-fields/
@@ -120,7 +105,7 @@ public class AppController {
         try{
             articles = news.parsedArticle(news.urlBuilder(endpoint, coun, lang, cate, sort, query));
         }
-        catch (IOException e){
+        catch (NullPointerException | NewAPIException e){
             System.out.println(e.getMessage());
         }
 
@@ -130,15 +115,12 @@ public class AppController {
         return articles;
     }
 
-
     //Stream Filter
     protected static List<Article> StreamFilterList(String query, List<Article> articles){
-
         if (query != null && articles != null){
-            List<Article> filteredList = articles.stream()
+            return articles.stream()
                     .filter(article -> article.getTitle().toLowerCase().contains(query.toLowerCase()))
                     .collect(Collectors.toList());
-            return filteredList;
         }
         else {
             return new ArrayList<>();

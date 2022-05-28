@@ -1,4 +1,4 @@
-package at.ac.fhcampuswien;
+package GUI;
 
 import API_Enums.Category;
 import API_Enums.Country;
@@ -13,7 +13,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -39,7 +38,7 @@ public class PopUpSceneController implements Initializable {
     private TextField everythingQueryTextField;
 
     private Country currentCountry = Country.AUSTRIA;
-    private Language currentLanguage = Language.German;
+    private Language currentLanguage = Language.GERMAN;
     private Sortby currentSortBy = Sortby.POPULARITY;
     private Category currentCategory = Category.GENERAL;
     private String topHeadlineQuery = "corona";

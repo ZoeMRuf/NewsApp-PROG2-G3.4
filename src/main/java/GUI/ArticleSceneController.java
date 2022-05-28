@@ -1,27 +1,24 @@
-package at.ac.fhcampuswien;
+package GUI;
 
 import API_Enums.*;
+import GUI.PopUpSceneController;
+import at.ac.fhcampuswien.AppController;
+import at.ac.fhcampuswien.NewAPIException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Font;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 
 public class ArticleSceneController{
     @FXML
@@ -36,7 +33,7 @@ public class ArticleSceneController{
     private Button everything_button;
 
     private Country currentCountry = Country.AUSTRIA;
-    private Language currentLanguage = Language.German;
+    private Language currentLanguage = Language.GERMAN;
     private Sortby currentSortBy = Sortby.POPULARITY;
     private Category currentCategory = Category.GENERAL;
     private String topHeadlineQuery = "corona";
@@ -118,13 +115,8 @@ public class ArticleSceneController{
     }
 
     public void sortByD(ActionEvent actionevent) {
-        String articleString = null;
-        try {
-            articleString = ctl.sortedByDescription()
-                    .toString().replaceAll("\\[", "").replaceAll("\\]", "");
-        } catch (NewAPIException e) {
-            e.getMessage();
-        }
+        String articleString = ctl.sortedByDescription()
+                .toString().replaceAll("\\[", "").replaceAll("\\]", "");
         Label label = new Label(articleString);
         scroll_pane.setContent(label);
     }

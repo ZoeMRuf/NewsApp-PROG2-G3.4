@@ -27,68 +27,81 @@ public class Article {
         this.publishedAt = publishedAt;
         this.content = content;
     }
-
     //Getter that can be used in all Classes
     public String getAuthor(){
-        return this.author;
+        try{
+            return this.author;
+        }
+        catch (Exception e){
+            System.out.println(e.getMessage());
+            return  "";
+        }
     }
 
-    public int getAuthorLength(){
-        if (author == null){
-            return 0;
-        }
-        return author.length();
-    }  // -------> Exeption Handeling
-
     public String getTitle(){
-        return this.title;
+        try{
+            return this.title;
+        }
+        catch (Exception e){
+            System.out.println(e.getMessage());
+            return "";
+        }
     }
 
     public String getDescription() {
-        if (description == null){
-            return "Empty";
-        }
-        return description;
-    } // -------> Exeption Handeling
-
-    public int getDescriptionLength() throws NewAPIException{
         try {
-            return description.length();
+            return this.description;
         }
         catch (Exception e){
-            throw new NewAPIException("Hallo");
-
-            /*
-            e.getMessage();
-            System.out.println("Description of the Article is null");
-            return 0;
-
-             */
+            System.out.println(e.getMessage());
+            return  "";
         }
-    }  // -------> Exeption Handeling
-
-    public Object getSourceId() {
-        return source.getId();
     }
 
     public String getSourceName() {
-        return source.getName();
+        try{
+            return this.source.getName();
+        }
+        catch (NullPointerException e){
+            System.out.println(e.getMessage());
+            return "";
+        }
+    }
+
+    public int getAuthorLength(){
+        try {
+            return this.author.length();
+        }
+        catch (NullPointerException e){
+            System.out.println(e.getMessage());
+            return 0;
+        }
+    }
+
+    public int getDescriptionLength(){
+        try {
+            return this.description.length();
+        }
+        catch (NullPointerException e){
+            System.out.println(e.getMessage());
+            return 0;
+        }
     }
 
     public String getUrl() {
-        return url;
+        return this.url;
     }
 
     public String getUrlToImage() {
-        return urlToImage;
+        return this.urlToImage;
     }
 
     public String getPublishedAt() {
-        return publishedAt;
+        return this.publishedAt;
     }
 
     public String getContent() {
-        return content;
+        return this.content;
     }
 
     @Override

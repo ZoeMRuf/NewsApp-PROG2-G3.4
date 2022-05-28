@@ -10,7 +10,7 @@ public class Menu {
     private static final String EXIT_MESSAGE = "Bye bye! AND DON'T FORGET TO SUBSCRIBE";
 
     //Methods
-    public void start() throws NewAPIException {
+    public void start() {
 
         controller = new AppController();
 
@@ -70,7 +70,6 @@ public class Menu {
 
     private void getAllNewsBitcoin(AppController ctrl){
         ctrl.getAllNewsBitcoin().forEach(System.out::println);
-
     }
 
     //this static Methods can only be used in this Class
@@ -82,11 +81,7 @@ public class Menu {
         System.out.println(INVALID_INPUT_MESSAGE);
     }
 
-    private static void printMenu() throws NewAPIException {
-
-        if (false){
-            throw new NewAPIException("HEEEEEEEEEEELP");
-        }
+    private static void printMenu() {
 
         System.out.println("******************************");
         System.out.println("  *   Welcome to NewsApp   *  ");

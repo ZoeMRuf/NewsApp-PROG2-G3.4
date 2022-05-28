@@ -93,22 +93,39 @@ public class NewsAPI {
         return stb.toString();
     }
 
-    public List<Article> parsedArticle(String url) throws IOException {
-        String jsonString = run(url);
-        NewsResponse Response = gson.fromJson(jsonString, NewsResponse.class);
-        return Response.getArticles();
+    public List<Article> parsedArticle(String url) throws NewAPIException{
+        try {
+            String jsonString = run(url);
+            NewsResponse Response = gson.fromJson(jsonString, NewsResponse.class);
+            return Response.getArticles();
+        }
+        catch (IOException e){
+            throw new NewAPIException("Problem with run Method");
+        }
+
+
     }
 
-    public int parsedTotalResults(String url) throws IOException {
-        String jsonString = run(url);
-        NewsResponse Response = gson.fromJson(jsonString, NewsResponse.class);
-        return Response.getTotalResults();
+    public int parsedTotalResults(String url) throws NewAPIException {
+        try {
+            String jsonString = run(url);
+            NewsResponse Response = gson.fromJson(jsonString, NewsResponse.class);
+            return Response.getTotalResults();
+        }
+        catch(IOException e){
+            throw new NewAPIException("Problem with run Method");
+        }
     }
 
-    public String parsedStatus(String url) throws IOException {
-        String jsonString = run(url);
-        NewsResponse Response = gson.fromJson(jsonString, NewsResponse.class);
-        return Response.getStatus();
+    public String parsedStatus(String url) throws NewAPIException {
+        try {
+            String jsonString = run(url);
+            NewsResponse Response = gson.fromJson(jsonString, NewsResponse.class);
+            return Response.getStatus();
+        }
+        catch(IOException e){
+            throw new NewAPIException("Problem with run Method");
+        }
     }
 
 }

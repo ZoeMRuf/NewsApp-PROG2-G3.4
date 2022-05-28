@@ -6,7 +6,7 @@ public enum Language {
     BULGARIAN("bg"),
     BOSNIAN("bs"),
     CZECH("cs"),
-    German("de"),
+    GERMAN("de"),
     GREEK("el"),
     ENGLISH("en"),
     SPANISH("es"),

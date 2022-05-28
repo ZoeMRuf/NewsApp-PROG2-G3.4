@@ -28,21 +28,15 @@ import java.util.Objects;
 
 public class App extends Application {
     public static void main(String[] args){
-
         /*
-        try{
-            Menu menu = new Menu(); //Instance of Menu to work with
-            menu.start();
-        }
-        catch (NewAPIException e){
-            System.out.println(e.getMessage());
-        }
+
+        Menu menu = new Menu(); //Instance of Menu to work with
+        menu.start();
 
          */
+
         launch(args);
     }
-
-
 
     @Override
     public void start(Stage stage) throws Exception {
