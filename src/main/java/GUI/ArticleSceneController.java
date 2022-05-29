@@ -62,6 +62,11 @@ public class ArticleSceneController{
                 .toString().replaceAll("\\[", "").replaceAll("\\]", "");
         Label label = new Label(articleString);
 
+        if (articleString.equals("")){
+            label.setText("There are no articles with the Country: " + currentCountry + "\n Language: " + currentLanguage + "\nQuery: " + topHeadlineQuery);
+
+        }
+
         scroll_pane.setContent(label);
 
         StringBuilder strBld = new StringBuilder();
@@ -88,6 +93,11 @@ public class ArticleSceneController{
         String articleString = ctl.getConfiguredArticles(Endpoint.EVERYTHING, currentCountry, currentLanguage, currentCategory, currentSortBy, everythingQuery)
                 .toString().replaceAll("\\[", "").replaceAll("\\]", "");
         Label label = new Label(articleString);
+
+        if (articleString.equals("")){
+            label.setText("There are no articles with the Country: " + currentCountry + "\n Language: " + currentLanguage + "\nQuery: " + everythingQuery);
+        }
+        System.out.println();
 
         scroll_pane.setContent(label);
 

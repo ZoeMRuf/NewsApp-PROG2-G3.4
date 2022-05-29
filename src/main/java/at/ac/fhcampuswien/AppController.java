@@ -72,7 +72,7 @@ public class AppController {
         }
         catch (NullPointerException e){
             System.out.println(e.getMessage());
-            return "";
+            return "There is no author";
         }
     }
 
