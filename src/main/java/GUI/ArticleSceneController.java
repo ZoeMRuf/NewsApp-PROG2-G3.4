@@ -63,7 +63,7 @@ public class ArticleSceneController{
         Label label = new Label(articleString);
 
         if (articleString.equals("")){
-            label.setText("There are no articles with the Country: " + currentCountry + "\n Language: " + currentLanguage + "\nQuery: " + topHeadlineQuery);
+            label.setText("There are no articles with the \nCountry: " + currentCountry + "\nLanguage: " + currentLanguage + "\nQuery: " + topHeadlineQuery);
 
         }
 
