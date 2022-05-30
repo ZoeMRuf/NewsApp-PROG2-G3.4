@@ -97,7 +97,6 @@ public class ArticleSceneController{
         if (articleString.equals("")){
             label.setText("There are no articles with the Country: " + currentCountry + "\n Language: " + currentLanguage + "\nQuery: " + everythingQuery);
         }
-        System.out.println();
 
         scroll_pane.setContent(label);
 

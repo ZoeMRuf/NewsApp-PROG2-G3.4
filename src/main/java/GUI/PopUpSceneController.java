@@ -11,8 +11,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -36,6 +39,8 @@ public class PopUpSceneController implements Initializable {
     private TextField topHeadlineQueryTextField;
     @FXML
     private TextField everythingQueryTextField;
+    @FXML
+    private Button back_popUp;
 
     private Country currentCountry = Country.AUSTRIA;
     private Language currentLanguage = Language.GERMAN;
@@ -96,5 +101,21 @@ public class PopUpSceneController implements Initializable {
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+    }
+
+    public void backToArticleScene(ActionEvent actionEvent) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/ArticleScene.fxml"));
+        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void changeBackColourRed(MouseEvent mouseEvent) {
+        back_popUp.setGraphic(new ImageView("/Back_Red.png"));
+    }
+
+    public void changeBackColourBlack(MouseEvent mouseEvent) {
+        back_popUp.setGraphic(new ImageView("/Back_Black.png"));
     }
 }
