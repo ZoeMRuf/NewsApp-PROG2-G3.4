@@ -8,6 +8,19 @@ public class AppController {
     private List<Article> articles;
     NewsAPI news = new NewsAPI();
 
+    private static AppController instance = null;
+
+    // Empty Constructor
+    private AppController(){}
+
+    // public way to get to our private AppController instance -> Singleton
+    public static AppController getInstanceAppController() {
+        if (instance == null){
+            instance = new AppController();
+        }
+        return instance;
+    }
+
     //Getter & Setter for articles
     public void setArticles(List <Article> articles){
         this.articles = articles;

@@ -15,7 +15,7 @@ public class AppControllerTest {
 
     @BeforeEach
     void setup(){
-        controller = new AppController();
+        controller = AppController.getInstanceAppController();
         testList = AppController.generateMockList();
         controller.setArticles(testList);
     }

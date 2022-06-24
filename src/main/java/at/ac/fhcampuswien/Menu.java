@@ -12,7 +12,7 @@ public class Menu {
     //Methods
     public void start() {
 
-        controller = new AppController();
+        controller = AppController.getInstanceAppController();
 
         printMenu();
         Scanner s = new Scanner(System.in);

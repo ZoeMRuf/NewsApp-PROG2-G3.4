@@ -39,7 +39,7 @@ public class ArticleSceneController{
     private String topHeadlineQuery = "corona";
     private String everythingQuery = "bitcoin";
 
-    private final AppController ctl = new AppController();
+    private final AppController ctl = AppController.getInstanceAppController();
 
     public void changeStartMenu(MouseEvent mouseEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/StartMenu.fxml"));
