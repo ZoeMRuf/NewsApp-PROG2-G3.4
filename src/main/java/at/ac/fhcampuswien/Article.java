@@ -2,30 +2,26 @@ package at.ac.fhcampuswien;
 
 public class Article {
     //Attributes
-    private String author;
-    private String title;
-    private String description;
-    private String content;
-    private Source source;
-    private String url;
-    private String urlToImage;
-    private String publishedAt;
+    private final String author;
+    private final String title;
+    private final String description;
+    private final String content;
+    private final Source source;
+    private final String url;
+    private final String urlToImage;
+    private final String publishedAt;
 
     //Constructor for this Class
-    public Article(String author, String title){
-        this.author = author;
-        this.title = title;
-    }
 
-    public Article(String author, String title, String description, Source source, String url, String urlToImage, String publishedAt, String content) {
-        this.author = author;
-        this.title = title;
-        this.description = description;
-        this.source = source;
-        this.url = url;
-        this.urlToImage = urlToImage;
-        this.publishedAt = publishedAt;
-        this.content = content;
+    private Article(Builder builder) {
+        this.author = builder.author;
+        this.title = builder.title;
+        this.description = builder.description;
+        this.source = builder.source;
+        this.url = builder.url;
+        this.urlToImage = builder.urlToImage;
+        this.publishedAt = builder.publishedAt;
+        this.content = builder.content;
     }
     //Getter that can be used in all Classes
     public String getAuthor(){
@@ -136,5 +132,70 @@ public class Article {
 
         return string.toString();
     }
+
+
+
+    public static class Builder{
+        private String author;
+        private String title;
+        private String description;
+        private String content;
+        private Source source;
+        private String url;
+        private String urlToImage;
+        private String publishedAt;
+
+        public Builder(){}
+
+        public Builder author(String author){
+            this.author = author;
+            return this;
+        }
+
+        public Builder title(String title){
+            this.title = title;
+            return this;
+        }
+
+        public Builder description(String description){
+            this.description = description;
+            return this;
+        }
+
+        public Builder content(String content){
+            this.content = content;
+            return this;
+        }
+
+        public Builder source(Source source){
+            this.source = source;
+            return this;
+        }
+
+        public Builder url(String url){
+            this.url = url;
+            return this;
+        }
+
+        public Builder urlToImage(String urlToImage){
+            this.urlToImage = urlToImage;
+            return this;
+        }
+
+        public Builder publishedAt(String publishedAt){
+            this.publishedAt = publishedAt;
+            return this;
+        }
+
+        public Article build(){
+            return new Article(this);
+        }
+
+
+    }
+
+
+
+
 
 }

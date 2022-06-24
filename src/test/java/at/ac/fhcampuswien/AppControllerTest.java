@@ -33,7 +33,7 @@ public class AppControllerTest {
     @DisplayName("filterListTest2: if there is only on right article.")
 
     public void filterListTest2(){
-        Article a12 = new Article("Amy B. McClaw","Murderer says detective ruined his reputation");
+        Article a12 = new Article.Builder().author("Amy B. McClaw").title("Murderer says detective ruined his reputation").build();
         String trueQuery = "Murderer";
         List<Article> actualFilterList = AppController.StreamFilterList(trueQuery,testList); // -> using the Method that should be tested
         List<Article> expectedFilterList = new ArrayList<>(); // -> what we think the filtered list should give back
@@ -56,7 +56,7 @@ public class AppControllerTest {
     @DisplayName("filterListTest4: if the query exits more than once in the title, the article should still just be added once.")
 
     public void filterListTest4(){
-        Article a14 = new Article("Wayne Hansen","Bugs flying around with wings are flying bugs");
+        Article a14 = new Article.Builder().author("Wayne Hansen").title("Bugs flying around with wings are flying bugs").build();
         String trueQuery = "Bugs";
         List<Article> actualFilterList = AppController.StreamFilterList(trueQuery,testList); // -> using the Method that should be tested
         List<Article> expectedFilterList = new ArrayList<>(); // -> what we think the filtered list should give back
@@ -79,11 +79,14 @@ public class AppControllerTest {
     @DisplayName("filterListTest6: if the query exists in more than one title all articles with the query should be added to the list.")
 
     public void filterListTest6(){
-        Article a04 = new Article("Penny","Man Accused of Killing Lawyer Receives a New Attorney");
-        Article a05 = new Article("Barbara Bitcoin","State population to double by 2040, babies to blame");
-        Article a07 = new Article("Leonard Hofstadter","Breathing oxygen linked to staying alive");
-        Article a10 = new Article("Santa Clause","Bridge closure date: Thursday or October");
-        Article a13 = new Article("john Smith","Utah Poison Control Center reminds everyone not to take poison");
+
+
+
+        Article a04 = new Article.Builder().author("Penny").title("Man Accused of Killing Lawyer Receives a New Attorney").build();
+        Article a05 = new Article.Builder().author("Barbara Bitcoin").title("State population to double by 2040, babies to blame").build();
+        Article a06 = new Article.Builder().author("Leonard Hofstadter").title("Breathing oxygen linked to staying alive").build();
+        Article a07 = new Article.Builder().author("Santa Clause").title("Bridge closure date: Thursday or October").build();
+        Article a08 = new Article.Builder().author("john Smith").title("Utah Poison Control Center reminds everyone not to take poison").build();
 
 
         String trueQuery = "to";
@@ -91,7 +94,7 @@ public class AppControllerTest {
         List<Article> expectedFilterList = new ArrayList<>(); // -> what we think the filtered list should give back
 
         expectedFilterList.add(a04); expectedFilterList.add(a05); expectedFilterList.add(a07);
-        expectedFilterList.add(a10); expectedFilterList.add(a13);
+        expectedFilterList.add(a06); expectedFilterList.add(a08);
 
         assertEquals(expectedFilterList.toString(), actualFilterList.toString());
     }
