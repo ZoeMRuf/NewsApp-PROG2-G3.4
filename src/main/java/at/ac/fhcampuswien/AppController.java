@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 
 public class AppController {
     private List<Article> articles;
-    NewsAPI news = NewsAPI.getInstanceNewsAPI();
+    //NewsAPI news = NewsAPI.getInstanceNewsAPI();
 
     private static AppController instance = null;
 

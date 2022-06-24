@@ -1,7 +1,6 @@
 package API_Enums;
 
 public enum Country {
-
     UNITED_ARAB_EMIRATES("ae"),
     ARGENTINA("ar"),
     AUSTRIA("at"),
@@ -63,5 +62,4 @@ public enum Country {
     Country(String country) {
         this.country = country;
     }
-
 }
