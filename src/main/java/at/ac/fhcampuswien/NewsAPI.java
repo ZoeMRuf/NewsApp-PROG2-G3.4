@@ -17,19 +17,6 @@ public class NewsAPI {
 
     private static final String API_KEY = "f1838514139e4ec4af10d461c4b28119";
 
-    /* SINGELTON
-    private static NewsAPI instance = null;
-
-    private NewsAPI(){}
-
-    public static NewsAPI getInstanceNewsAPI(){
-        if (instance == null){
-            instance = new NewsAPI();
-        }
-        return instance;
-    }
-     */
-
     private final String endpoint;
     private final String country;
     private final String language;
@@ -49,53 +36,72 @@ public class NewsAPI {
 
     public String urlBuilder(){
         StringBuilder stb = new StringBuilder();
+        int flag = 0; //So the If-Conditions vor Query and ApiKey are easier
 
-        int flag = 0;
+        stb.append("https://newsapi.org/v2/"); // Star of every URL always appended
+        stb.append(this.endpoint).append("?"); // There must always be an endpoint, so we can also just append it to the String
 
-        stb.append("https://newsapi.org/v2/");
-        stb.append(this.endpoint+"?");
+        // If-Condition for the two different Endpoint -> here TopHeadlines
         if(this.endpoint.equals("top-headlines")){
+
+            // If country & category are given they must be appended with a "&" to separate them
             if(this.country != null && this.category!= null){
-                stb.append("country="+ this.country);
-                stb.append("&category="+ this.category);
-                flag = 1;
-            } else if (this.country != null){
-                stb.append("country="+ this.country);
-                flag = 1;
+                stb.append("country=").append(this.country);
+                stb.append("&category=").append(this.category);
+                flag = 1; // Flag is set if anything is appended to the String after the Endpoint
             }
+            // first else-if -> if only country is given (it is appended to the String without the "&")
+            else if (this.country != null){
+                stb.append("country=").append(this.country);
+                flag = 1; // Flag is set if anything is appended to the String after the Endpoint
+            }
+            // second else-if -> if only category is given (it is appended to the String without the "&")
             else if (this.category!= null){
-                stb.append("category="+ this.category);
-                flag = 1;
+                stb.append("category=").append(this.category);
+                flag = 1; // Flag is set if anything is appended to the String after the Endpoint
             }
 
-        } else{ //endpoint = everything
+        }
+        // If Endpoint is NOT TopHeadlines it must be -> Everything
+        else{
+            // If language & sortby are given they must be appended with a "&" to separate them
             if(this.language != null && this.sortby!= null){
-                stb.append("language="+ this.language);
-                stb.append("&sortby="+ this.sortby);
-                flag = 1;
-            } else if (this.language != null){
-                stb.append("language="+ this.language);
-                flag = 1;
+                stb.append("language=").append(this.language);
+                stb.append("&sortby=").append(this.sortby);
+                flag = 1; // Flag is set if anything is appended to the String after the Endpoint
             }
+            // first else-if -> if only language is given (it is appended to the String without the "&")
+            else if (this.language != null){
+                stb.append("language=").append(this.language);
+                flag = 1; // Flag is set if anything is appended to the String after the Endpoint
+            }
+            // second else-if -> if only sortby is given (it is appended to the String without the "&")
             else if (this.sortby!= null){
-                stb.append("sortby="+ this.sortby);
-                flag = 1;
+                stb.append("sortby=").append(this.sortby);
+                flag = 1; // Flag is set if anything is appended to the String after the Endpoint
             }
         }
 
-        if(this.query != null && flag == 0) {
+        // If only Endpoint (Mandatory) and the Query are given (flag is still 0), append Query without the "&"
+        if (this.query != null && flag == 0) {
             stb.append("q=").append(query);
-        } else if(this.query != null && flag == 1){
+            flag = 1; // Flag is set if anything is appended to the String after the Endpoint
+        }
+        // If query is given and flag is 1 append query with "&" to separate it form the other parameters
+        else if (this.query != null && flag == 1){
             stb.append("&q=").append(query);
         }
 
-        if(flag == 0) {
+        // If Flag is 0 nothing was appended to the Endpoint the ApiKey can be appended without an "&"
+        if (flag == 0) {
             stb.append("apiKey=").append(API_KEY);
-        } else {
+        }
+        // Else the "&" is needed
+        else {
             stb.append("&apiKey=").append(API_KEY);
         }
 
-        return stb.toString();
+        return stb.toString(); // Make StringBuilder to String
     }
 
     public String run(String url) throws IOException {
