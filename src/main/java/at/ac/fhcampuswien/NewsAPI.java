@@ -15,6 +15,17 @@ public class NewsAPI {
     Gson gson = new Gson();
     OkHttpClient client = new OkHttpClient();
 
+    private static NewsAPI instance = null;
+
+    private NewsAPI(){}
+
+    public static NewsAPI getInstanceNewsAPI(){
+        if (instance == null){
+            instance = new NewsAPI();
+        }
+        return instance;
+    }
+
     private static final String API_KEY = "f1838514139e4ec4af10d461c4b28119";
 
     public String run(String url) throws IOException {
