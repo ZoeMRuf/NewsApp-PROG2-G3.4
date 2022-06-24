@@ -6,7 +6,8 @@ import java.util.stream.Collectors;
 
 public class AppController {
     private List<Article> articles;
-    //NewsAPI news = NewsAPI.getInstanceNewsAPI();
+
+
 
     private static AppController instance = null;
 
@@ -40,7 +41,8 @@ public class AppController {
     //main AppController Methods
     public List<Article> getTopHeadlinesAustria(){
         try{
-            articles = news.parsedArticle(news.urlBuilder(Country.AUSTRIA, Category.GENERAL, "corona"));
+            NewsAPI news = new NewsAPI.Builder(Endpoint.TOPHEADLINE).country(Country.AUSTRIA).category(Category.GENERAL).query("corona").build();
+            articles = news.parsedArticle(news.urlBuilder());
         }
         catch (NullPointerException | NewAPIException e){
             System.out.println(e.getMessage());
@@ -51,7 +53,8 @@ public class AppController {
 
     public List<Article> getAllNewsBitcoin(){
         try{
-            articles = news.parsedArticle(news.urlBuilder(Language.GERMAN, Sortby.PUBLISHED_AT, "bitcoin"));
+            NewsAPI news = new NewsAPI.Builder(Endpoint.EVERYTHING).language(Language.GERMAN).sortby(Sortby.PUBLISHED_AT).query("bitcoin").build();
+            articles = news.parsedArticle(news.urlBuilder());
         }
         catch (NullPointerException | NewAPIException e){
             System.out.println(e.getMessage());
@@ -116,7 +119,8 @@ public class AppController {
 
     public List<Article> getConfiguredArticles(Endpoint endpoint, Country coun, Language lang, Category cate, Sortby sort, String query){
         try{
-            articles = news.parsedArticle(news.urlBuilder(endpoint, coun, lang, cate, sort, query));
+            NewsAPI news = new NewsAPI.Builder(endpoint).country(coun).language(lang).category(cate).sortby(sort).query(query).build();
+            articles = news.parsedArticle(news.urlBuilder());
         }
         catch (NullPointerException | NewAPIException e){
             System.out.println(e.getMessage());

@@ -150,37 +150,43 @@ public class NewsAPI {
         private String query;
 
         public Builder(Endpoint endpoint){
-            this.endpoint = endpoint.toString();
+            this.endpoint = endpoint.endpoint;
         }
 
         public Builder country(Country country) {
-            this.country = country.toString();
+            this.country = country.country;
             return this;
         }
 
         public Builder language(Language language) {
-            this.language = language.toString();
+            this.language = language.language;
             return this;
         }
 
         public Builder category(Category category) {
-            this.category = category.toString();
+            this.category = category.category;
             return this;
         }
 
         public Builder sortby (Sortby sortby) {
-            this.sortby = sortby.toString();
+            this.sortby = sortby.sortby;
             return this;
         }
 
         public Builder query(String query){
-            this.query = query.toString();
+            this.query = query;
             return this;
         }
 
         public NewsAPI build(){
             return new NewsAPI(this);
         }
+    }
+
+    public static void main(String[] args) {
+        NewsAPI news = new NewsAPI.Builder(Endpoint.EVERYTHING).language(Language.GERMAN).sortby(Sortby.PUBLISHED_AT).query("bitcoin").build();
+        String url = news.urlBuilder();
+        System.out.println(url);
     }
 }
 
