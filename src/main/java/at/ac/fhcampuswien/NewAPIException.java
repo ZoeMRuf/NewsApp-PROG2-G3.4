@@ -10,7 +10,7 @@ public class NewAPIException extends Exception{
     }
 
     public NewAPIException(){
-
+        super();
     }
 
     @Override
