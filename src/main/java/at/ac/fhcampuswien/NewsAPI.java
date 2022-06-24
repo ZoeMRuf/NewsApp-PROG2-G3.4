@@ -108,73 +108,6 @@ public class NewsAPI {
         }
     }
 
-
-    public String urlBuilder(Endpoint endpoint, Country coun, Language lang, Category cate, Sortby sort, String query){
-        StringBuilder stb = new StringBuilder();
-        stb.append("https://newsapi.org/v2/");
-
-        if (endpoint == Endpoint.TOPHEADLINE){
-            stb.append("top-headlines?country=");
-            stb.append(coun.country);
-
-            stb.append("&category=");
-            stb.append(cate.category);
-        }
-        else {
-            stb.append("everything?language=");
-            stb.append(lang.language);
-
-            stb.append("&sortby=");
-            stb.append(sort.sortby);
-        }
-
-        if(query != null) {
-            stb.append("&q=").append(query);
-        }
-
-        stb.append("&apiKey=");
-        stb.append(API_KEY);
-
-        return stb.toString();
-    }
-
-    public String urlBuilder(Country coun, Category cate, String query){
-        StringBuilder stb = new StringBuilder();
-        stb.append("https://newsapi.org/v2/");
-
-        stb.append("top-headlines?country=");
-        stb.append(coun.country);
-
-        stb.append("&category=");
-        stb.append(cate.category);
-
-
-        stb.append("&q=").append(query);
-
-        stb.append("&apiKey=");
-        stb.append(API_KEY);
-
-        return stb.toString();
-    }
-
-    public String urlBuilder(Language lang, Sortby sort, String query){
-        StringBuilder stb = new StringBuilder();
-        stb.append("https://newsapi.org/v2/");
-
-        stb.append("everything?language=");
-        stb.append(lang.language);
-
-        stb.append("&sortby=");
-        stb.append(sort.sortby);
-
-        stb.append("&q=").append(query);
-
-        stb.append("&apiKey=");
-        stb.append(API_KEY);
-
-        return stb.toString();
-    }
-
     public List<Article> parsedArticle(String url) throws NewAPIException{
         try {
             String jsonString = run(url);
@@ -184,8 +117,6 @@ public class NewsAPI {
         catch (IOException e){
             throw new NewAPIException("Problem with run Method");
         }
-
-
     }
 
     public int parsedTotalResults(String url) throws NewAPIException {
@@ -212,11 +143,11 @@ public class NewsAPI {
 
     public static class Builder{
         private final String endpoint;
-        private final String country;
-        private final String language;
-        private final String category;
-        private final String sortby;
-        private final String query;
+        private String country;
+        private String language;
+        private String category;
+        private String sortby;
+        private String query;
 
         public Builder(Endpoint endpoint){
             this.endpoint = endpoint.toString();
