@@ -189,10 +189,5 @@ public class NewsAPI {
         }
     }
 
-    public static void main(String[] args) {
-        NewsAPI news = new NewsAPI.Builder(Endpoint.EVERYTHING).language(Language.GERMAN).sortby(Sortby.PUBLISHED_AT).query("bitcoin").build();
-        String url = news.urlBuilder();
-        System.out.println(url);
-    }
 }
 

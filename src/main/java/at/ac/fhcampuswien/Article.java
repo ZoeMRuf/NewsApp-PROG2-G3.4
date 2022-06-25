@@ -134,7 +134,6 @@ public class Article {
     }
 
 
-
     public static class Builder{
         private String author;
         private String title;
@@ -193,5 +192,4 @@ public class Article {
 
 
     }
-
 }

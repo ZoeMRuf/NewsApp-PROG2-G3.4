@@ -26,11 +26,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class App extends Application{      //
+public class App extends Application {
     public static void main(String[] args){
 
-        //Menu menu = new Menu(); //Instance of Menu to work with
-        //menu.start();
+        // Menu menu = new Menu(); //Instance of Menu to work with
+        // menu.start();
 
 
 

@@ -132,6 +132,18 @@ public class AppController {
         return articles;
     }
 
+    public int downloadURLs(Downloader downloader) throws NewAPIException{
+        if( articles == null)
+            throw new NewAPIException();
+
+        List<String> urls = articles.stream()
+                .map(Article::getUrl)
+                .filter(url -> url != null)
+                .collect(Collectors.toList());
+
+        return downloader.process(urls);
+    }
+
     //Stream Filter
     protected static List<Article> StreamFilterList(String query, List<Article> articles){
         if (query != null && articles != null){
@@ -152,19 +164,18 @@ public class AppController {
             List<Article> filteredList = new ArrayList();
 
             //for-loop to go through all articles in the list
-            for (int i = 0; i < articles.size(); i++) {
-                Article toFilter = articles.get(i);
+            for (Article toFilter : articles) {
                 String articleTitle = toFilter.getTitle(); // -> to get only the title of the article
                 String[] splitTitle = articleTitle.split(" "); // -> to get all the words of the title
 
                 //for-loop to go through all the words
-                for (int j = 0; j < splitTitle.length; j++) {
+                for (String s : splitTitle) {
                     //if-condition to skip the title if it is already in the list
-                    if (filteredList.contains(toFilter)){
+                    if (filteredList.contains(toFilter)) {
                         break;
                     }
                     //if-condition to compare the query with the words
-                    else if (splitTitle[j].toLowerCase().contains(query.toLowerCase())){
+                    else if (s.toLowerCase().contains(query.toLowerCase())) {
                         //.equalsIgnoreCase(query) -> searches only for the whole word not just parts
                         filteredList.add(toFilter);
                     }
@@ -175,18 +186,6 @@ public class AppController {
         else {
             return new ArrayList<>();
         }
-    }
-
-    public int downloadURLs(Downloader downloader) throws NewAPIException{
-        if( articles == null)
-            throw new NewAPIException();
-
-        List<String> urls = articles.stream()
-                .map(Article::getUrl)
-                .filter(url -> url != null)
-                .collect(Collectors.toList());
-
-        return downloader.process(urls);
     }
 
     public static List<Article> generateMockList(){
