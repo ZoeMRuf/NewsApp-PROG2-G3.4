@@ -194,8 +194,4 @@ public class Article {
 
     }
 
-
-
-
-
 }

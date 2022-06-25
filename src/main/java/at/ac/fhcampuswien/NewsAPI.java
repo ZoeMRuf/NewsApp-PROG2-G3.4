@@ -39,7 +39,7 @@ public class NewsAPI {
         int flag = 0; //So the If-Conditions vor Query and ApiKey are easier
 
         stb.append("https://newsapi.org/v2/"); // Star of every URL always appended
-        stb.append(this.endpoint).append("?"); // There must always be an endpoint, so we can also just append it to the String
+        stb.append(this.endpoint).append("?"); // There must always be an endpoint, so just append it to the String
 
         // If-Condition for the two different Endpoint -> here TopHeadlines
         if(this.endpoint.equals("top-headlines")){

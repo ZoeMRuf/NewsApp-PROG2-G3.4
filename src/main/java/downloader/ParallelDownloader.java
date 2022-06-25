@@ -12,47 +12,32 @@ public class ParallelDownloader extends Downloader{
     public int process(List<String> urls) {
         // TODO implement download function using multiple threads
         // Hint: use ExecutorService with Callables
-        int numWorkers = Runtime.getRuntime().availableProcessors();
-        ExecutorService pool = Executors.newFixedThreadPool(numWorkers);
 
-        Future<String> future = pool.submit(new Callable<String>() {
-            @Override
-            public String call() throws Exception {
-                for (String u: urls) {
-                    Callable<String> task = () ->{
-                        try{
-                            return saveUrl2File(u);
-                        }catch(Exception e){
-                            return "error";
-                        }
-                    };
+        int numberOfDownloads = 0;
 
-                }
+        int threadCount = Runtime.getRuntime().availableProcessors();
+        ExecutorService threadPool = Executors.newFixedThreadPool(threadCount);
 
-
-                return null;
-            }
-        });
-
-        pool.shutdown();
-
-
-        /*
         List<Callable<String>> callables = new ArrayList<>();
 
-        for (String u: urls) {
-            Callable<String> task = () ->{
-                try{
-                    return saveUrl2File(u);
-                }catch(Exception e){
-                    return "error";
-                }
-            };
-            callables.add(task);
+        for (String url: urls) {
+            Callable<String> download = () -> saveUrl2File(url);
+            callables.add(download);
         }
 
-         */
+        try{
+            List<Future<String>> allFutureDownloads = threadPool.invokeAll(callables);
+            for (Future<String> future: allFutureDownloads) {
+                if (future.get() != null){
+                    numberOfDownloads++;
+                }
+            }
+        }
+        catch (InterruptedException | ExecutionException exception){
+            System.out.println(exception.getMessage());
+        }
 
-        return 0;
+        threadPool.shutdown();
+        return numberOfDownloads;
     }
 }
