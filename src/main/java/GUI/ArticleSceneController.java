@@ -4,6 +4,7 @@ import API_Enums.*;
 import GUI.PopUpSceneController;
 import at.ac.fhcampuswien.AppController;
 import at.ac.fhcampuswien.NewAPIException;
+import downloader.SequentialDownloader;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -21,6 +22,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class ArticleSceneController{
+    public Button download_button;
     @FXML
     private Button back_button;
     @FXML
@@ -36,7 +38,7 @@ public class ArticleSceneController{
     private Language currentLanguage = Language.GERMAN;
     private Sortby currentSortBy = Sortby.POPULARITY;
     private Category currentCategory = Category.GENERAL;
-    private String topHeadlineQuery = "corona";
+    private String topHeadlineQuery = "ukraine";
     private String everythingQuery = "bitcoin";
 
     private final AppController ctl = AppController.getInstanceAppController();
@@ -118,6 +120,20 @@ public class ArticleSceneController{
 
         extra.setText(strBld.toString());
         extraInfoScroll.setContent(extra);
+    }
+
+    public void downloadURLs(ActionEvent actionEvent) throws NewAPIException {
+
+        long startTime = System.nanoTime();
+        int resultSequential = ctl.downloadURLs(new SequentialDownloader());
+        long endTime = System.nanoTime();
+
+        long duration = (endTime - startTime) / 10000000;
+
+        System.out.println(duration);
+
+        Label save = new Label(scroll_pane.getContent().toString() + "\n" + duration + " ms");
+        scroll_pane.setContent(save);
     }
 
     public void sortByD(ActionEvent actionevent) {

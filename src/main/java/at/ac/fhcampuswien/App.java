@@ -26,20 +26,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class App extends Application {
+public class App extends Application{      //
     public static void main(String[] args){
 
-        Menu menu = new Menu(); //Instance of Menu to work with
-        menu.start();
-
-        long startTime = System.nanoTime();
-
-        long endTime = System.nanoTime();
-
-        long duration = (endTime - startTime);
+        //Menu menu = new Menu(); //Instance of Menu to work with
+        //menu.start();
 
 
-        //launch(args);
+
+        launch(args);
     }
 
     @Override
@@ -56,3 +51,5 @@ public class App extends Application {
 
     }
 }
+
+

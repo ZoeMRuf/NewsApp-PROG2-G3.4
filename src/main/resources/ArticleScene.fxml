@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.ArticleSceneController">
+<AnchorPane prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.ArticleSceneController">
    <children>
       <Button fx:id="back_button" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#changeStartMenu" onMouseEntered="#changeBackButtonRed" onMouseExited="#changeBackButtonBlack" prefHeight="52.0" prefWidth="159.0">
          <graphic>
@@ -66,12 +66,13 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <Button fx:id="sortByButton" layoutX="14.0" layoutY="245.0" mnemonicParsing="false" onAction="#sortByD" prefHeight="20.0" prefWidth="270.0" text="Sort by description length" />
+      <Button fx:id="sortByButton" layoutX="14.0" layoutY="307.0" mnemonicParsing="false" onAction="#sortByD" prefHeight="20.0" prefWidth="270.0" text="Sort by description length" />
       <ScrollPane fx:id="extraInfoScroll" layoutX="13.0" layoutY="365.0" prefHeight="316.0" prefWidth="270.0">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="225.0" prefWidth="270.0" />
         </content>
       </ScrollPane>
       <Button fx:id="configurate" layoutX="14.0" layoutY="119.0" mnemonicParsing="false" onAction="#popUpScene" prefHeight="26.0" prefWidth="82.0" text="Configurate" />
+      <Button fx:id="download_button" layoutX="14.0" layoutY="248.0" mnemonicParsing="false" onAction="#downloadURLs" prefHeight="40.0" prefWidth="270.0" text="Download URLs" />
    </children>
 </AnchorPane>

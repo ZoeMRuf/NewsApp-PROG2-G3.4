@@ -1,5 +1,8 @@
 package at.ac.fhcampuswien;
 
+import downloader.ParallelDownloader;
+import downloader.SequentialDownloader;
+
 import java.util.Scanner;
 
 public class Menu {
@@ -28,7 +31,7 @@ public class Menu {
                     printMenu();
                 }
             }
-            while(!input.equals("a") && !input.equals("b") && !input.equals("y") && !input.equals("q"));
+            while(!input.equals("a") && !input.equals("b") && !input.equals("y") && !input.equals("q") && !input.equals("h"));
         }while (!input.equals("q"));
     }
 
@@ -49,6 +52,10 @@ public class Menu {
                 break;
             case "q":
                 printExitMessage();
+                System.out.println();
+                break;
+            case "h":
+                downloadURLs(controller);
                 System.out.println();
                 break;
             default:
@@ -72,6 +79,21 @@ public class Menu {
         ctrl.getAllNewsBitcoin().forEach(System.out::println);
     }
 
+    private void downloadURLs(AppController ctrl){
+        try {
+            int resultSequential = ctrl.downloadURLs(new SequentialDownloader());
+            // TODO print time in ms it took to download URLs sequentially
+
+            // TODO implement the process() function in ParallelDownloader class
+            //int resultParallel = ctrl.downloadURLs(new ParallelDownloader());
+
+            // TODO print time in ms it took to download URLs parallel
+
+        } catch (NewAPIException e){
+            System.out.println(e.getMessage());
+        }
+    }
+
     //this static Methods can only be used in this Class
     private static void printExitMessage(){
         System.out.println(EXIT_MESSAGE);
@@ -90,6 +112,7 @@ public class Menu {
         System.out.println("a: Get top headlines austria");
         System.out.println("b: Get all news about bitcoin");
         System.out.println("y: Count articles");
+        System.out.println("h: Download URLs");
         System.out.println("q: Quit program");
         System.out.println();
 

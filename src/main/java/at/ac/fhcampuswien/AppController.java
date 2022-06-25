@@ -43,7 +43,7 @@ public class AppController {
     //main AppController Methods
     public List<Article> getTopHeadlinesAustria(){
         try{
-            NewsAPI news = new NewsAPI.Builder(Endpoint.TOPHEADLINE).country(Country.AUSTRIA).category(Category.GENERAL).query("corona").build();
+            NewsAPI news = new NewsAPI.Builder(Endpoint.TOPHEADLINE).country(Country.AUSTRIA).category(Category.GENERAL).query("ukraine").build();
             articles = news.parsedArticle(news.urlBuilder());
         }
         catch (NullPointerException | NewAPIException e){
