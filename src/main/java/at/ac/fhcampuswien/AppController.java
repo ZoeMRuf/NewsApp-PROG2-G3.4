@@ -1,6 +1,8 @@
 package at.ac.fhcampuswien;
 
 import API_Enums.*;
+import downloader.Downloader;
+
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -175,6 +177,18 @@ public class AppController {
         else {
             return new ArrayList<>();
         }
+    }
+
+    public int downloadURLs(Downloader downloader) throws NewAPIException{
+        if( articles == null)
+            throw new NewAPIException();
+
+        List<String> urls = articles.stream()
+                .map(Article::getUrl)
+                .filter(url -> url != null)
+                .collect(Collectors.toList());
+
+        return downloader.process(urls);
     }
 
     public static List<Article> generateMockList(){

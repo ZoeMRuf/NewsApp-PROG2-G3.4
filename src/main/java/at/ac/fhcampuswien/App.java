@@ -28,14 +28,18 @@ import java.util.Objects;
 
 public class App extends Application {
     public static void main(String[] args){
-        /*
 
         Menu menu = new Menu(); //Instance of Menu to work with
         menu.start();
 
-         */
+        long startTime = System.nanoTime();
 
-        launch(args);
+        long endTime = System.nanoTime();
+
+        long duration = (endTime - startTime);
+
+
+        //launch(args);
     }
 
     @Override
