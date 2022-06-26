@@ -46,7 +46,7 @@ public class PopUpSceneController implements Initializable {
     private Language currentLanguage = Language.GERMAN;
     private Sortby currentSortBy = Sortby.POPULARITY;
     private Category currentCategory = Category.GENERAL;
-    private String topHeadlineQuery = "corona";
+    private String topHeadlineQuery = null;
     private String everythingQuery = "bitcoin";
 
 

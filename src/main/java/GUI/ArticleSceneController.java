@@ -132,27 +132,30 @@ public class ArticleSceneController{
 
         long duration = (endTime - startTime) / 10000000;
 
-        System.out.println(duration);
-
         StringBuilder strBld = new StringBuilder();
         Label extra = new Label();
         extra.setFont(new Font("Arial", 15));
 
-        strBld.append("\nProvider with the most articles:\n");
-        strBld.append(ctl.getMostPopularSources()).append("\n");
-        strBld.append("\nAuthor with the longest name:\n").append(ctl.getLongestAuthorName()).append("\n");
-        strBld.append("\n\"New York Times\" Atricles: ").append(ctl.getNewYorkTimesArticleCount()).append("\n");
-        strBld.append("\nNumber of Articles: ").append(ctl.getArticleCount()).append("\n");
-        strBld.append("\nTime taken: ").append(duration).append(" ms\n");
+        try {
+            strBld.append("\nProvider with the most articles:\n");
+            strBld.append(ctl.getMostPopularSources()).append("\n");
+            strBld.append("\nAuthor with the longest name:\n").append(ctl.getLongestAuthorName()).append("\n");
+            strBld.append("\n\"New York Times\" Atricles: ").append(ctl.getNewYorkTimesArticleCount()).append("\n");
+            strBld.append("\nNumber of Articles: ").append(ctl.getArticleCount()).append("\n");
+            strBld.append("\nTime taken: ").append(duration).append(" ms\n");
 
-        if(ctl.getShortHeadlines().size() != 0){
-            strBld.append("Short titles:\n");
-            strBld.append(ctl.getShortHeadlines()
-                    .toString().replaceAll("\\[", "").replaceAll("\\]", ""));
+            if(ctl.getShortHeadlines().size() != 0){
+                strBld.append("Short titles:\n");
+                strBld.append(ctl.getShortHeadlines()
+                        .toString().replaceAll("\\[", "").replaceAll("\\]", ""));
+            }
+
+            extra.setText(strBld.toString());
+            extraInfoScroll.setContent(extra);
+        }catch(Exception e){
+            System.out.println("No articles!");
         }
 
-        extra.setText(strBld.toString());
-        extraInfoScroll.setContent(extra);
     }
 
     public void parallel_downloadURLs(ActionEvent actionEvent) throws NewAPIException {
@@ -162,27 +165,29 @@ public class ArticleSceneController{
 
         long duration = (endTime - startTime) / 10000000;
 
-        System.out.println(duration);
-
         StringBuilder strBld = new StringBuilder();
         Label extra = new Label();
         extra.setFont(new Font("Arial", 15));
 
-        strBld.append("\nProvider with the most articles:\n");
-        strBld.append(ctl.getMostPopularSources()).append("\n");
-        strBld.append("\nAuthor with the longest name:\n").append(ctl.getLongestAuthorName()).append("\n");
-        strBld.append("\n\"New York Times\" Atricles: ").append(ctl.getNewYorkTimesArticleCount()).append("\n");
-        strBld.append("\nNumber of Articles: ").append(ctl.getArticleCount()).append("\n");
-        strBld.append("\nTime taken: ").append(duration).append(" ms\n");
+        try {
+            strBld.append("\nProvider with the most articles:\n");
+            strBld.append(ctl.getMostPopularSources()).append("\n");
+            strBld.append("\nAuthor with the longest name:\n").append(ctl.getLongestAuthorName()).append("\n");
+            strBld.append("\n\"New York Times\" Atricles: ").append(ctl.getNewYorkTimesArticleCount()).append("\n");
+            strBld.append("\nNumber of Articles: ").append(ctl.getArticleCount()).append("\n");
+            strBld.append("\nTime taken: ").append(duration).append(" ms\n");
 
-        if(ctl.getShortHeadlines().size() != 0){
-            strBld.append("Short titles:\n");
-            strBld.append(ctl.getShortHeadlines()
-                    .toString().replaceAll("\\[", "").replaceAll("\\]", ""));
+            if(ctl.getShortHeadlines().size() != 0){
+                strBld.append("Short titles:\n");
+                strBld.append(ctl.getShortHeadlines()
+                        .toString().replaceAll("\\[", "").replaceAll("\\]", ""));
+            }
+
+            extra.setText(strBld.toString());
+            extraInfoScroll.setContent(extra);
+        }catch(Exception e){
+            System.out.println("No articles!");
         }
-
-        extra.setText(strBld.toString());
-        extraInfoScroll.setContent(extra);
     }
 
     public void sortByD(ActionEvent actionevent) {

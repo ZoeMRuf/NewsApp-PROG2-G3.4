@@ -133,13 +133,20 @@ public class AppController {
     }
 
     public int downloadURLs(Downloader downloader) throws NewAPIException{
-        if( articles == null)
-            throw new NewAPIException();
+        List<String> urls;
+        try{
+            if( articles == null)
+                throw new NewAPIException();
 
-        List<String> urls = articles.stream()
-                .map(Article::getUrl)
-                .filter(url -> url != null)
-                .collect(Collectors.toList());
+            urls = articles.stream()
+                    .map(Article::getUrl)
+                    .filter(url -> url != null)
+                    .collect(Collectors.toList());
+        }catch (NewAPIException e){
+            System.out.println(e.getMessage());
+            return 0;
+        }
+
 
         return downloader.process(urls);
     }
