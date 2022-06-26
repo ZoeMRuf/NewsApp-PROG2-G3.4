@@ -81,13 +81,23 @@ public class Menu {
 
     private void downloadURLs(AppController ctrl){
         try {
-            int resultSequential = ctrl.downloadURLs(new SequentialDownloader());
-            // TODO print time in ms it took to download URLs sequentially
-
             // TODO implement the process() function in ParallelDownloader class
-            //int resultParallel = ctrl.downloadURLs(new ParallelDownloader());
+            long parallelStartTime = System.nanoTime();
+            int resultParallel = ctrl.downloadURLs(new ParallelDownloader());
+            long parallelEndTime = System.nanoTime();
+
+            long durationParallel = (parallelEndTime - parallelStartTime) / 10000000;
+
 
             // TODO print time in ms it took to download URLs parallel
+            long sequentialStartTime = System.nanoTime();
+            int resultSequential = ctrl.downloadURLs(new SequentialDownloader());
+            long sequentialEndTime = System.nanoTime();
+
+            long durationSequential = (sequentialEndTime - sequentialStartTime) / 10000000;
+
+            System.out.println("Sequential download: " + durationSequential + "\n");
+            System.out.println("Parallel download: " + durationParallel + "\n");
 
         } catch (NewAPIException e){
             System.out.println(e.getMessage());
