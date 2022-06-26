@@ -24,6 +24,7 @@ import java.io.IOException;
 
 public class ArticleSceneController{
     public Button download_button;
+    public Button parallel_download_button;
     @FXML
     private Button back_button;
     @FXML
@@ -39,7 +40,7 @@ public class ArticleSceneController{
     private Language currentLanguage = Language.GERMAN;
     private Sortby currentSortBy = Sortby.POPULARITY;
     private Category currentCategory = Category.GENERAL;
-    private String topHeadlineQuery = "ukraine";
+    private String topHeadlineQuery = null;
     private String everythingQuery = "bitcoin";
 
     private final AppController ctl = AppController.getInstanceAppController();
@@ -126,6 +127,19 @@ public class ArticleSceneController{
     public void downloadURLs(ActionEvent actionEvent) throws NewAPIException {
 
         long startTime = System.nanoTime();
+        int resultSequential = ctl.downloadURLs(new SequentialDownloader());
+        long endTime = System.nanoTime();
+
+        long duration = (endTime - startTime) / 10000000;
+
+        System.out.println(duration);
+
+        Label save = new Label(extraInfoScroll.getContent().toString() + "\n" + duration + " ms");
+        extraInfoScroll.setContent(save);
+    }
+
+    public void parallel_downloadURLs(ActionEvent actionEvent) throws NewAPIException {
+        long startTime = System.nanoTime();
         int resultSequential = ctl.downloadURLs(new ParallelDownloader());
         long endTime = System.nanoTime();
 
@@ -133,8 +147,8 @@ public class ArticleSceneController{
 
         System.out.println(duration);
 
-        Label save = new Label(scroll_pane.getContent().toString() + "\n" + duration + " ms");
-        scroll_pane.setContent(save);
+        Label save = new Label(extraInfoScroll.getContent().toString() + "\n" + duration + " ms");
+        extraInfoScroll.setContent(save);
     }
 
     public void sortByD(ActionEvent actionevent) {

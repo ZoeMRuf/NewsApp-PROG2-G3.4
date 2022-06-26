@@ -66,13 +66,14 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <Button fx:id="sortByButton" layoutX="14.0" layoutY="307.0" mnemonicParsing="false" onAction="#sortByD" prefHeight="20.0" prefWidth="270.0" text="Sort by description length" />
+      <Button fx:id="sortByButton" layoutX="14.0" layoutY="337.0" mnemonicParsing="false" onAction="#sortByD" prefHeight="20.0" prefWidth="270.0" text="Sort by description length" />
       <ScrollPane fx:id="extraInfoScroll" layoutX="13.0" layoutY="365.0" prefHeight="316.0" prefWidth="270.0">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="225.0" prefWidth="270.0" />
         </content>
       </ScrollPane>
       <Button fx:id="configurate" layoutX="14.0" layoutY="119.0" mnemonicParsing="false" onAction="#popUpScene" prefHeight="26.0" prefWidth="82.0" text="Configurate" />
-      <Button fx:id="download_button" layoutX="14.0" layoutY="248.0" mnemonicParsing="false" onAction="#downloadURLs" prefHeight="40.0" prefWidth="270.0" text="Download URLs" />
+      <Button fx:id="parallel_download_button" layoutX="13.0" layoutY="291.0" mnemonicParsing="false" onAction="#parallel_downloadURLs" prefHeight="40.0" prefWidth="270.0" text="Parallel Download URLs" />
+      <Button fx:id="download_button1" layoutX="14.0" layoutY="245.0" mnemonicParsing="false" onAction="#downloadURLs" prefHeight="40.0" prefWidth="270.0" text="Sequential Download URLs" />
    </children>
 </AnchorPane>
