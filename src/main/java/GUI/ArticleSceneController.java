@@ -4,6 +4,7 @@ import API_Enums.*;
 import GUI.PopUpSceneController;
 import at.ac.fhcampuswien.AppController;
 import at.ac.fhcampuswien.NewAPIException;
+import downloader.ParallelDownloader;
 import downloader.SequentialDownloader;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -125,7 +126,7 @@ public class ArticleSceneController{
     public void downloadURLs(ActionEvent actionEvent) throws NewAPIException {
 
         long startTime = System.nanoTime();
-        int resultSequential = ctl.downloadURLs(new SequentialDownloader());
+        int resultSequential = ctl.downloadURLs(new ParallelDownloader());
         long endTime = System.nanoTime();
 
         long duration = (endTime - startTime) / 10000000;
