@@ -16,12 +16,12 @@ public class ParallelDownloader extends Downloader{
         int numberOfDownloads = 0;
 
         /**
-         * Crate the Thread Pool
+         * Create the Thread Pool
          */
 
         //Returns the number of processors available to the Java virtual machine
         int threadCount = Runtime.getRuntime().availableProcessors();
-        // Creates a thread pool that reuses a fixed numvber of threads
+        // Creates a thread pool that reuses a fixed number of threads
         ExecutorService threadPool = Executors.newFixedThreadPool(threadCount);
 
         List<Callable<String>> callables = new ArrayList<>();
